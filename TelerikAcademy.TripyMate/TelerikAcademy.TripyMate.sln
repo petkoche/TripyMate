@@ -7,6 +7,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelerikAcademy.TripyMate.We
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelerikAcademy.TripyMate.Tests", "TelerikAcademy.TripyMate.Tests\TelerikAcademy.TripyMate.Tests.csproj", "{0EE6C3A2-8C5D-493D-9704-B381B402B57E}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{79B913BA-EAEE-48CA-A33F-27A71A678E3E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelerikAcademy.TripyMate.Data", "TelerikAcademy.TripyMate.Data\TelerikAcademy.TripyMate.Data.csproj", "{61EF2F4B-2F00-4431-971E-E155721A2E6C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelerikAcademy.TripyMate.Data.Model", "TelerikAcademy.TripyMate.Data.Model\TelerikAcademy.TripyMate.Data.Model.csproj", "{D1A19ACF-F80C-47CD-BD71-C3D02B043CCA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,8 +27,20 @@ Global
 		{0EE6C3A2-8C5D-493D-9704-B381B402B57E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0EE6C3A2-8C5D-493D-9704-B381B402B57E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0EE6C3A2-8C5D-493D-9704-B381B402B57E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61EF2F4B-2F00-4431-971E-E155721A2E6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61EF2F4B-2F00-4431-971E-E155721A2E6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61EF2F4B-2F00-4431-971E-E155721A2E6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61EF2F4B-2F00-4431-971E-E155721A2E6C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1A19ACF-F80C-47CD-BD71-C3D02B043CCA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1A19ACF-F80C-47CD-BD71-C3D02B043CCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1A19ACF-F80C-47CD-BD71-C3D02B043CCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1A19ACF-F80C-47CD-BD71-C3D02B043CCA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{61EF2F4B-2F00-4431-971E-E155721A2E6C} = {79B913BA-EAEE-48CA-A33F-27A71A678E3E}
+		{D1A19ACF-F80C-47CD-BD71-C3D02B043CCA} = {79B913BA-EAEE-48CA-A33F-27A71A678E3E}
 	EndGlobalSection
 EndGlobal
