@@ -223,6 +223,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Home\PostViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -305,6 +306,10 @@
     <ProjectReference Include="..\TelerikAcademy.TripyMate.Data\TelerikAcademy.TripyMate.Data.csproj">
       <Project>{61EF2F4B-2F00-4431-971E-E155721A2E6C}</Project>
       <Name>TelerikAcademy.TripyMate.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TelerikAcademy.TripyMate.Services\TelerikAcademy.TripyMate.Services.csproj">
+      <Project>{FC2FA187-E1F6-444D-A1AB-323DBAC23FA5}</Project>
+      <Name>TelerikAcademy.TripyMate.Services</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

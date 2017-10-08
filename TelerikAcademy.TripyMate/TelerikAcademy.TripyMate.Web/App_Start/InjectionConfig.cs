@@ -13,6 +13,7 @@ namespace TelerikAcademy.TripyMate.Web.App_Start
     using Data.Repositories;
     using System.Data.Entity;
     using Data;
+    using Services.Contracts;
 
     public static class InjectionConfig
     {
@@ -67,6 +68,13 @@ namespace TelerikAcademy.TripyMate.Web.App_Start
             kernel.Bind(x =>
             {
                 x.FromThisAssembly()
+                .SelectAllClasses()
+                .BindDefaultInterface();
+            });
+
+            kernel.Bind(x =>
+            {
+                x.FromAssemblyContaining(typeof(IService))
                 .SelectAllClasses()
                 .BindDefaultInterface();
             });
