@@ -30,7 +30,12 @@ namespace TelerikAcademy.TripyMate.Web.Controllers
                 })
                 .ToList();
 
-            return View(posts);
+            var viewModel = new HomeViewModel()
+            {
+                Posts = posts
+            };
+
+            return View(viewModel);
         }
 
         public ActionResult About()

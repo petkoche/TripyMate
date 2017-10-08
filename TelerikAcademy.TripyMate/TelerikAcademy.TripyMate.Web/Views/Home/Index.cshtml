@@ -1,5 +1,5 @@
 ﻿@using TelerikAcademy.TripyMate.Web.Models.Home
-@model ICollection<PostViewModel>
+@model HomeViewModel
 
 @{
     ViewBag.Title = "Home Page";
@@ -34,12 +34,8 @@
 </div>
 
 <div class="row">
-    @foreach (var post in Model)
+    @foreach (var post in Model.Posts)
     {
-        <div class="col-md-4">
-            <h2>@post.Title</h2>
-            <p>@post.Content</p>
-            <p>@post.PostedOn - @post.AuthorEmail</p>
-        </div>
+        @Html.Partial("_PostDetailsPartial", post);
     }
 </div>
