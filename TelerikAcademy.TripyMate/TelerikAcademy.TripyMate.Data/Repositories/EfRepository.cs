@@ -6,12 +6,12 @@ using TelerikAcademy.TripyMate.Data.Model.Contracts;
 
 namespace TelerikAcademy.TripyMate.Data.Repositories
 {
-    public class EfRepostory<T> : IEfRepostory<T>
+    public class EfRepository<T> : IEfRepository<T>
         where T : class, IDeletable
     {
         private readonly MsSqlDbContext context;
 
-        public EfRepostory(MsSqlDbContext context)
+        public EfRepository(MsSqlDbContext context)
         {
             this.context = context;
         }

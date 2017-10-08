@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace TelerikAcademy.TripyMate.Data.Model.Contracts
 {
-    interface IAuditable
+    public interface IAuditable
     {
         DateTime? CreatedOn { get; set; }
 
-        DateTime? DeletedOn { get; set; }
+        DateTime? ModifiedOn { get; set; }
     }
 }
