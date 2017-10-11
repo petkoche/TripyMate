@@ -14,6 +14,7 @@ namespace TelerikAcademy.TripyMate.Web.App_Start
     using System.Data.Entity;
     using Data;
     using Services.Contracts;
+    using Data.Repositories.Contracts;
 
     public static class InjectionConfig
     {
@@ -81,6 +82,7 @@ namespace TelerikAcademy.TripyMate.Web.App_Start
 
             kernel.Bind(typeof(DbContext), typeof(MsSqlDbContext)).To<MsSqlDbContext>().InRequestScope();
             kernel.Bind(typeof(IEfRepository<>)).To(typeof(EfRepository<>));
+            kernel.Bind<IPostRepository>().To<PostRepository>().InRequestScope();
         }        
     }
 }

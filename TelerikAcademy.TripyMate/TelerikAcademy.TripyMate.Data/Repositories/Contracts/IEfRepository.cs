@@ -2,7 +2,7 @@
 using System.Linq;
 using TelerikAcademy.TripyMate.Data.Model.Contracts;
 
-namespace TelerikAcademy.TripyMate.Data.Repositories
+namespace TelerikAcademy.TripyMate.Data.Repositories.Contracts
 {
     public interface IEfRepository<T> where T : class, IDeletable
     {

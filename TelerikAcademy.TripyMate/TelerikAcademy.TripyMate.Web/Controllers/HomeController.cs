@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using TelerikAcademy.TripyMate.Services;
+using TelerikAcademy.TripyMate.Services.Contracts;
 using TelerikAcademy.TripyMate.Web.Models.Home;
 using TelerikAcademy.TripyMate.Web.Models.Post;
 

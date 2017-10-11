@@ -5,14 +5,16 @@ using System.Text;
 using System.Threading.Tasks;
 using TelerikAcademy.TripyMate.Data.Model;
 using TelerikAcademy.TripyMate.Data.Repositories;
+using TelerikAcademy.TripyMate.Data.Repositories.Contracts;
+using TelerikAcademy.TripyMate.Services.Contracts;
 
 namespace TelerikAcademy.TripyMate.Services
 {
     public class PostsService : IPostsService
     {
-        private readonly IEfRepository<Post> postsRepo;
+        private readonly IPostRepository postsRepo;
 
-        public PostsService(IEfRepository<Post> postsRepo)
+        public PostsService(IPostRepository postsRepo)
         {
             this.postsRepo = postsRepo;
         }
@@ -26,5 +28,6 @@ namespace TelerikAcademy.TripyMate.Services
         {
             return this.postsRepo.Get(id);
         }
+
     }
 }

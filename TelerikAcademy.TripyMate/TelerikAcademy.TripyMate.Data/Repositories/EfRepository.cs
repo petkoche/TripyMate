@@ -3,6 +3,7 @@ using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using TelerikAcademy.TripyMate.Data.Model.Contracts;
+using TelerikAcademy.TripyMate.Data.Repositories.Contracts;
 
 namespace TelerikAcademy.TripyMate.Data.Repositories
 {

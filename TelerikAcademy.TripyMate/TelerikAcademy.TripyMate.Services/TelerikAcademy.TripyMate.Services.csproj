@@ -41,7 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Contracts\IService.cs" />
-    <Compile Include="IPostsService.cs" />
+    <Compile Include="Contracts\IPostsService.cs" />
     <Compile Include="PostService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -2,7 +2,7 @@
 using System.Linq;
 using TelerikAcademy.TripyMate.Data.Model;
 
-namespace TelerikAcademy.TripyMate.Services
+namespace TelerikAcademy.TripyMate.Services.Contracts
 {
     public interface IPostsService
     {
