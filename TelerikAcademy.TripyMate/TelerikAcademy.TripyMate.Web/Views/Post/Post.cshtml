@@ -1,11 +1,14 @@
 ﻿@using TelerikAcademy.TripyMate.Web.Models.Post
 @model PostViewModel
 
+@{
+    ViewBag.Title = "Detailerd Post";
+}
+
+
 <div class="col-md-4">
     <h2>@Model.Title</h2>
     <h4>@Model.StartTown -> @Model.EndTown</h4>
     <p>@Model.Content</p>
     <p>@Html.DisplayFor(x => Model.PostedOn) - @Model.AuthorEmail</p>
-    <p>@Model.ID towa e id</p>
-    @Html.ActionLink("Read More", "Index", "Post", new { area = "", id = Model.ID }, new { @class = "btn btn-default" })
 </div>

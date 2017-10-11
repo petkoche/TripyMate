@@ -9,6 +9,13 @@ namespace TelerikAcademy.TripyMate.Data.Model
 {
     public class Post : DataModel
     {
+        public Post()
+        {
+            this.ID = Guid.NewGuid();
+        }
+
+        public Guid ID { get; set; }
+
         public string Title { get; set; }
 
         public string Content { get; set; }

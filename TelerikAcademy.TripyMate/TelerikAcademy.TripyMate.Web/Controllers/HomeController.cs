@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using TelerikAcademy.TripyMate.Services;
 using TelerikAcademy.TripyMate.Web.Models.Home;
+using TelerikAcademy.TripyMate.Web.Models.Post;
 
 namespace TelerikAcademy.TripyMate.Web.Controllers
 {
@@ -23,6 +24,7 @@ namespace TelerikAcademy.TripyMate.Web.Controllers
                 .GetAll()
                 .Select(x => new PostViewModel()
                 {
+                    ID = x.ID,
                     Title = x.Title,
                     Content = x.Content,
                     AuthorEmail = x.Author.Email,

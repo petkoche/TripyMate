@@ -7,14 +7,6 @@ namespace TelerikAcademy.TripyMate.Data.Model.Abstracts
 {
     public abstract class DataModel : IAuditable, IDeletable
     {
-        public DataModel()
-        {
-            this.Id = Guid.NewGuid();
-        }
-
-        [Key]
-        public Guid Id { get; set; }
-
         [Index]
         public bool IsDeleted { get; set; }
 

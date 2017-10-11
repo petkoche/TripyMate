@@ -21,5 +21,10 @@ namespace TelerikAcademy.TripyMate.Services
         {
             return this.postsRepo.All;
         }
+
+        public Post GetById(Guid id)
+        {
+            return this.postsRepo.Get(id);
+        }
     }
 }

@@ -65,5 +65,10 @@ namespace TelerikAcademy.TripyMate.Data.Repositories
 
             entry.State = EntityState.Modified;
         }
+
+        public T Get(Guid id)
+        {
+            return this.context.Set<T>().Find(id);
+        }
     }
 }
