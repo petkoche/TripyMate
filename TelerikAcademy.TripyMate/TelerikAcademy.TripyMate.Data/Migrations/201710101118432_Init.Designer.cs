@@ -7,13 +7,13 @@ namespace TelerikAcademy.TripyMate.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.0-30225")]
-    public sealed partial class SeedChange : IMigrationMetadata
+    public sealed partial class Init : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(SeedChange));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Init));
         
         string IMigrationMetadata.Id
         {
-            get { return "201710081520234_SeedChange"; }
+            get { return "201710101118432_Init"; }
         }
         
         string IMigrationMetadata.Source

@@ -13,7 +13,7 @@ namespace TelerikAcademy.TripyMate.Data
     public class MsSqlDbContext : IdentityDbContext<User>
     {
         public MsSqlDbContext()
-            : base("LocalConnection", throwIfV1Schema: false)
+            : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
 
@@ -24,6 +24,8 @@ namespace TelerikAcademy.TripyMate.Data
         }
 
         public IDbSet<Post> Posts { get; set; }
+        public IDbSet<EndTown> EndTowns { get; set; }
+        public IDbSet<StartTown> StartTowns { get; set; }
 
         private void ApplyAuditInfoRules()
         {

@@ -9,6 +9,10 @@ namespace TelerikAcademy.TripyMate.Web.Models.Home
     {
         public string Title { get; set; }
 
+        public string StartTown { get; set; }
+
+        public string EndTown { get; set; }
+
         public string Content { get; set; }
 
         public string AuthorEmail { get; set; }

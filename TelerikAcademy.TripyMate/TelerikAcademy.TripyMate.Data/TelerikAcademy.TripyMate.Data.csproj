@@ -57,13 +57,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\201710062359081_UserChange.cs" />
-    <Compile Include="Migrations\201710062359081_UserChange.Designer.cs">
-      <DependentUpon>201710062359081_UserChange.cs</DependentUpon>
+    <Compile Include="Migrations\201710101118432_Init.cs" />
+    <Compile Include="Migrations\201710101118432_Init.Designer.cs">
+      <DependentUpon>201710101118432_Init.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201710081520234_SeedChange.cs" />
-    <Compile Include="Migrations\201710081520234_SeedChange.Designer.cs">
-      <DependentUpon>201710081520234_SeedChange.cs</DependentUpon>
+    <Compile Include="Migrations\201710111527249_towns.cs" />
+    <Compile Include="Migrations\201710111527249_towns.Designer.cs">
+      <DependentUpon>201710111527249_towns.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MsSqlDbContex.cs" />
@@ -82,11 +82,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201710062359081_UserChange.resx">
-      <DependentUpon>201710062359081_UserChange.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201710101118432_Init.resx">
+      <DependentUpon>201710101118432_Init.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710081520234_SeedChange.resx">
-      <DependentUpon>201710081520234_SeedChange.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201710111527249_towns.resx">
+      <DependentUpon>201710111527249_towns.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

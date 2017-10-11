@@ -26,7 +26,9 @@ namespace TelerikAcademy.TripyMate.Web.Controllers
                     Title = x.Title,
                     Content = x.Content,
                     AuthorEmail = x.Author.Email,
-                    PostedOn = x.CreatedOn.Value
+                    PostedOn = x.CreatedOn.Value,
+                    StartTown = x.StartTown.Name,
+                    EndTown = x.EndTown.Name
                 })
                 .ToList();
 

@@ -20,6 +20,8 @@ namespace TelerikAcademy.TripyMate.Data.Migrations
 
         protected override void Seed(MsSqlDbContext context)
         {
+            this.SeedSampleStartTowns(context);
+            this.SeedSampleEndTowns(context);
             this.SeedUsers(context);
             this.SeedSampleData(context);
 
@@ -52,6 +54,32 @@ namespace TelerikAcademy.TripyMate.Data.Migrations
             }
         }
 
+        private void SeedSampleEndTowns(MsSqlDbContext context)
+        {
+            if (!context.EndTowns.Any())
+            {
+                var endTown = new EndTown()
+                    {
+                        Name = "Sofia"
+                    };
+
+                context.EndTowns.Add(endTown);
+            }
+        }
+
+        private void SeedSampleStartTowns(MsSqlDbContext context)
+        {
+            if (!context.StartTowns.Any())
+            {
+                    var startTown = new StartTown()
+                    {
+                        Name = "Burgas"
+                    };
+
+                    context.StartTowns.Add(startTown);
+            }
+        }
+
         private void SeedSampleData(MsSqlDbContext context)
         {
             if (!context.Posts.Any())
@@ -63,6 +91,8 @@ namespace TelerikAcademy.TripyMate.Data.Migrations
                         Title = "Post " + i,
                         Content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet lobortis nibh. Nullam bibendum, tortor quis porttitor fringilla, eros risus consequat orci, at scelerisque mauris dolor sit amet nulla. Vivamus turpis lorem, pellentesque eget enim ut, semper faucibus tortor. Aenean malesuada laoreet lorem.",
                         Author = context.Users.First(x => x.Email == AdministratorUserName),
+                        StartTown = context.StartTowns.First(x => x.Name == "Burgas"),
+                        EndTown = context.EndTowns.First(x => x.Name == "Sofia"),
                         CreatedOn = DateTime.Now
                     };
 
@@ -70,5 +100,7 @@ namespace TelerikAcademy.TripyMate.Data.Migrations
                 }
             }
         }
+
+
     }
 }
