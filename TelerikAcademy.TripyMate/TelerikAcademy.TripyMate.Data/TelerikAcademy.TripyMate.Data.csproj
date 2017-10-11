@@ -69,6 +69,10 @@
     <Compile Include="Migrations\201710112133174_Lowering Abstraction.Designer.cs">
       <DependentUpon>201710112133174_Lowering Abstraction.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710112331109_UserPic-UserPhone.cs" />
+    <Compile Include="Migrations\201710112331109_UserPic-UserPhone.Designer.cs">
+      <DependentUpon>201710112331109_UserPic-UserPhone.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MsSqlDbContex.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -96,6 +100,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710112133174_Lowering Abstraction.resx">
       <DependentUpon>201710112133174_Lowering Abstraction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710112331109_UserPic-UserPhone.resx">
+      <DependentUpon>201710112331109_UserPic-UserPhone.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -21,7 +21,7 @@ namespace TelerikAcademy.TripyMate.Services
 
         public IQueryable<Post> GetAll()
         {
-            return this.postsRepo.All;
+            return this.postsRepo.All.OrderBy(s => s.CreatedOn);
         }
 
         public Post GetById(Guid id)

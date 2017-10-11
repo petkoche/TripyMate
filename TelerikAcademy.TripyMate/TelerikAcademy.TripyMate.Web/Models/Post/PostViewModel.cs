@@ -9,6 +9,8 @@ namespace TelerikAcademy.TripyMate.Web.Models.Post
     {
         public Guid ID { get; set; }
 
+        public string PhotoId { get; set; }
+
         public string Title { get; set; }
 
         public string StartTown { get; set; }

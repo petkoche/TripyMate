@@ -16,6 +16,7 @@ namespace TelerikAcademy.TripyMate.Data.Model
 
         public User()
         {
+            this.PhotoId = "http://data.whicdn.com/images/179018121/large.jpg";
             this.posts = new HashSet<Post>();
         }
 
@@ -30,6 +31,8 @@ namespace TelerikAcademy.TripyMate.Data.Model
 
         [DataType(DataType.DateTime)]
         public DateTime? ModifiedOn { get; set; }
+
+        public string PhotoId { get; set; }
 
         public virtual ICollection<Post> Posts
         {

@@ -7,5 +7,6 @@
     <p>@Model.Content</p>
     <p>@Html.DisplayFor(x => Model.PostedOn) - @Model.AuthorEmail</p>
     <p>@Model.ID towa e id</p>
+    <img style="width:50px" src=@Model.PhotoId>
     @Html.ActionLink("Read More", "Index", "Post", new { area = "", id = Model.ID }, new { @class = "btn btn-default" })
 </div>

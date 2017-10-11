@@ -28,6 +28,7 @@ namespace TelerikAcademy.TripyMate.Web.Controllers
                                 ID = x.ID,
                                 Title = x.Title,
                                 Content = x.Content,
+                                PhotoId = x.Author.PhotoId,
                                 AuthorEmail = x.Author.Email,
                                 PostedOn = x.CreatedOn.Value,
                                 StartTown = x.StartTown.Name,
@@ -52,6 +53,7 @@ namespace TelerikAcademy.TripyMate.Web.Controllers
             var model = new PostViewModel() {                
                 Title = getPost.Title,
                 Content = getPost.Content,
+                PhotoId = getPost.Author.PhotoId,
                 AuthorEmail = getPost.Author.Email,
                 PostedOn = getPost.CreatedOn.Value,
                 StartTown = getPost.StartTown.Name,

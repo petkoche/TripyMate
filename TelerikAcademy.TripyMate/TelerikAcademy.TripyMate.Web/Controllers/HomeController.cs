@@ -28,6 +28,7 @@ namespace TelerikAcademy.TripyMate.Web.Controllers
                     ID = x.ID,
                     Title = x.Title,
                     Content = x.Content,
+                    PhotoId = x.Author.PhotoId,
                     AuthorEmail = x.Author.Email,
                     PostedOn = x.CreatedOn.Value,
                     StartTown = x.StartTown.Name,

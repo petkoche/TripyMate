@@ -79,6 +79,11 @@ namespace TelerikAcademy.TripyMate.Web.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [DataType(DataType.PhoneNumber)]
+        [StringLength(10, ErrorMessage = "The phone number is in incorrect length", MinimumLength = 10)]
+        [Display(Name = "PhoneNumber")]
+        public string PhoneNumber { get; set; }
     }
 
     public class ResetPasswordViewModel
