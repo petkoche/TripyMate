@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -27,6 +28,7 @@ namespace TelerikAcademy.TripyMate.Web.Models.Post
 
         public string AuthorEmail { get; set; }
 
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
         public DateTime PostedOn { get; set; }
     }
 }
