@@ -21,8 +21,9 @@
     background-repeat: no-repeat;
     background-position: center right;
     max-height: 680px;
-    background-position: center right;
-    background-size: 354px;
+    background-position-x: 80%;
+    /* background-position: right; */
+    background-size: 320px;
     background-color: #f6f7fa;
 }
 
