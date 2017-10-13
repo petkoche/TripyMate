@@ -73,6 +73,10 @@
     <Compile Include="Migrations\201710112331109_UserPic-UserPhone.Designer.cs">
       <DependentUpon>201710112331109_UserPic-UserPhone.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710122220248_UserUpdt.cs" />
+    <Compile Include="Migrations\201710122220248_UserUpdt.Designer.cs">
+      <DependentUpon>201710122220248_UserUpdt.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MsSqlDbContex.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -103,6 +107,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710112331109_UserPic-UserPhone.resx">
       <DependentUpon>201710112331109_UserPic-UserPhone.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710122220248_UserUpdt.resx">
+      <DependentUpon>201710122220248_UserUpdt.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

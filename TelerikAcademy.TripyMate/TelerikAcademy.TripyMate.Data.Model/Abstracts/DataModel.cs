@@ -7,6 +7,12 @@ namespace TelerikAcademy.TripyMate.Data.Model.Abstracts
 {
     public abstract class DataModel : IAuditable, IDeletable
     {
+
+        public DataModel()
+        {
+            this.CreatedOn = DateTime.Now;
+        }
+
         [Index]
         public bool IsDeleted { get; set; }
 

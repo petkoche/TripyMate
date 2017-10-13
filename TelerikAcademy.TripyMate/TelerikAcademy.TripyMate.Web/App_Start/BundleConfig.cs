@@ -23,6 +23,9 @@ namespace TelerikAcademy.TripyMate.Web
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/forms").Include(
+                        "~/Scripts/formjs.js"));            
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));

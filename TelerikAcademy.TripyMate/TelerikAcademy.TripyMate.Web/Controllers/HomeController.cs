@@ -26,6 +26,9 @@ namespace TelerikAcademy.TripyMate.Web.Controllers
                 .Select(x => new PostViewModel()
                 {
                     ID = x.ID,
+                    FirstName = x.Author.FirstName,
+                    LastName = x.Author.LastName,
+                    PhoneNumber = x.Author.PhoneNumber,
                     Title = x.Title,
                     Content = x.Content,
                     PhotoId = x.Author.PhotoId,

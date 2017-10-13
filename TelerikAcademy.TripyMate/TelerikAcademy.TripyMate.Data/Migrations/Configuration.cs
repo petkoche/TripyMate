@@ -43,10 +43,11 @@ namespace TelerikAcademy.TripyMate.Data.Migrations
                 var userManager = new UserManager<User>(userStore);
                 var user = new User
                 {
+                    FirstName = "Georgi",
+                    LastName = "Bojinov",
                     UserName = AdministratorUserName,
                     Email = AdministratorUserName,
                     EmailConfirmed = true,
-                    CreatedOn = DateTime.Now
                 };
 
                 userManager.Create(user, AdministratorPassword);

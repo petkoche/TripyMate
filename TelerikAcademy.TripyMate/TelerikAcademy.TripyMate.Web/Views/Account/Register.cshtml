@@ -4,44 +4,48 @@
 }
 
 <h2>@ViewBag.Title.</h2>
-
 @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
     <h4>Create a new account.</h4>
-    <hr />
+                    <hr />
     @Html.ValidationSummary("", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.PhoneNumber, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" class="btn btn-default" value="Register" />
+    <div class="main-agileits">
+        <div class="mainw3-agileinfo form">
+            <div id="login">
+                <form action="#" method="post">
+                    <div class="field-wrap">                        
+                        @Html.TextBoxFor(m => m.FirstName, new { })
+                        <label> Enter Your First Name<span class="req">*</span> </label>
+                    </div>
+                    <div class="field-wrap">                        
+                        @Html.TextBoxFor(m => m.LastName, new { })
+                        <label> Enter Your Last Name<span class="req">*</span> </label>
+                    </div>
+                    <div class="field-wrap">                        
+                        @Html.TextBoxFor(m => m.Email, new {  })
+                        <label> Enter Your Email<span class="req">*</span> </label>
+                    </div>
+                    <div class="field-wrap">                        
+                        @Html.PasswordFor(m => m.Password, new {  })
+                        <label> Enter Your Password<span class="req">*</span> </label>
+                    </div>
+                    <div class="field-wrap">                        
+                        @Html.PasswordFor(m => m.ConfirmPassword, new {  })
+                        <label> Repeat Your Password<span class="req">*</span> </label>
+                    </div>
+                    <div class="field-wrap">                        
+                        @Html.TextBoxFor(m => m.PhoneNumber, new {  })
+                        <label> Enter Your Phone Number<span class="req">*</span> </label>
+                    </div>
+                        <input type="submit" class="button button-block" value="Register" />                    
+                </form>
+            </div>
         </div>
     </div>
 }
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/formjs")
 }

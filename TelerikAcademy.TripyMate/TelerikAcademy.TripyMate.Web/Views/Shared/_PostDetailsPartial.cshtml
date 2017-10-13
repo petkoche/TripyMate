@@ -1,12 +1,22 @@
 ﻿@using TelerikAcademy.TripyMate.Web.Models.Post
 @model PostViewModel
 
-<div class="col-md-4">
-    <h2>@Model.Title</h2>
-    <h4>@Model.StartTown -> @Model.EndTown</h4>
+<div class="col-md-3 postMain">
+    <div class="row">
+        <div class="col-md-3">
+            <img class="roundImg" style="width:50px" src=@Model.PhotoId>
+        </div>
+        <div class="col-md-9">
+            <h4>@Model.FirstName @Model.LastName </h4>
+            <h4>&#128241; @Model.PhoneNumber</h4>
+        </div>
+    </div>
+
+    <hr />
+    <h4>@Model.StartTown ⇨ @Model.EndTown</h4>
+    <hr />
     <p>@Model.Content</p>
     <p>@Html.DisplayFor(x => Model.PostedOn) - @Model.AuthorEmail</p>
-    <p>@Model.ID towa e id</p>
-    <img style="width:50px" src=@Model.PhotoId>
+    
     @Html.ActionLink("Read More", "Index", "Post", new { area = "", id = Model.ID }, new { @class = "btn btn-default" })
 </div>

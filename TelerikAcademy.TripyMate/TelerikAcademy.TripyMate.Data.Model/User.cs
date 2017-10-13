@@ -23,6 +23,16 @@ namespace TelerikAcademy.TripyMate.Data.Model
         [Index]
         public bool IsDeleted { get; set; }
 
+        [MinLength(3)]
+        [MaxLength(30)]
+        [Required]
+        public string FirstName { get; set; }
+
+        [MinLength(3)]
+        [MaxLength(30)]
+        [Required]
+        public string LastName { get; set; }
+
         [DataType(DataType.DateTime)]
         public DateTime? DeletedOn { get; set; }
 

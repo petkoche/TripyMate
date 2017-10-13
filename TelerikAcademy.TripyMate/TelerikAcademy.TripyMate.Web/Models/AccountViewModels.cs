@@ -84,6 +84,16 @@ namespace TelerikAcademy.TripyMate.Web.Models
         [StringLength(10, ErrorMessage = "The phone number is in incorrect length", MinimumLength = 10)]
         [Display(Name = "PhoneNumber")]
         public string PhoneNumber { get; set; }
+
+        [Required(ErrorMessage = "Please Enter your name")]
+        [MinLength(3, ErrorMessage = "Your name must be at least 3 symbols long!")]
+        [MaxLength(25, ErrorMessage = "Your name must be at least 25 symbols long!")]
+        public string FirstName { get; set; }
+
+        [Required(ErrorMessage = "Please enter your Last Name!")]
+        [MinLength(3, ErrorMessage = "Your name must be at least 3 symbols long!")]
+        [MaxLength(25, ErrorMessage = "Your name must be at least 25 symbols long!")]
+        public string LastName { get; set; }
     }
 
     public class ResetPasswordViewModel

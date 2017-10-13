@@ -26,6 +26,9 @@ namespace TelerikAcademy.TripyMate.Web.Controllers
                             .Select(x => new PostViewModel()
                             {
                                 ID = x.ID,
+                                FirstName = x.Author.FirstName,
+                                LastName = x.Author.LastName,
+                                PhoneNumber = x.Author.PhoneNumber,
                                 Title = x.Title,
                                 Content = x.Content,
                                 PhotoId = x.Author.PhotoId,
@@ -50,7 +53,11 @@ namespace TelerikAcademy.TripyMate.Web.Controllers
         {
             var getPost = this.postsService.GetById(id);
 
-            var model = new PostViewModel() {                
+            var model = new PostViewModel() {
+
+                FirstName = getPost.Author.FirstName,
+                LastName = getPost.Author.LastName,
+                PhoneNumber = getPost.Author.PhoneNumber,
                 Title = getPost.Title,
                 Content = getPost.Content,
                 PhotoId = getPost.Author.PhotoId,

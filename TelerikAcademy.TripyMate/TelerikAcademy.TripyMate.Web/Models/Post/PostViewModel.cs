@@ -11,6 +11,12 @@ namespace TelerikAcademy.TripyMate.Web.Models.Post
 
         public string PhotoId { get; set; }
 
+        public string FirstName { get; set; }
+
+        public string LastName { get; set; }
+
+        public string PhoneNumber { get; set; }
+
         public string Title { get; set; }
 
         public string StartTown { get; set; }
