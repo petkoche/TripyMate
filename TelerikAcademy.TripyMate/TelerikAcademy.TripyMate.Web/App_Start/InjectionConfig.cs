@@ -15,6 +15,9 @@ namespace TelerikAcademy.TripyMate.Web.App_Start
     using Data;
     using Services.Contracts;
     using Data.Repositories.Contracts;
+    using Data.UnitOfWork;
+    using Services;
+    using AutoMapper;
 
     public static class InjectionConfig
     {
@@ -80,9 +83,14 @@ namespace TelerikAcademy.TripyMate.Web.App_Start
                 .BindDefaultInterface();
             });
 
+            kernel.Bind<IUnitOfWork>().To<UnitOfWork>().InRequestScope();
+
             kernel.Bind(typeof(DbContext), typeof(MsSqlDbContext)).To<MsSqlDbContext>().InRequestScope();
+
             kernel.Bind(typeof(IEfRepository<>)).To(typeof(EfRepository<>));
             kernel.Bind<IPostRepository>().To<PostRepository>().InRequestScope();
+            kernel.Bind<IUserRepository>().To<UserRepository>().InRequestScope();
+            kernel.Bind<IMapper>().To<Mapper>();
         }        
     }
 }

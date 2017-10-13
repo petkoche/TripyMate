@@ -18,6 +18,7 @@ namespace TelerikAcademy.TripyMate.Data.Model
         {
             this.PhotoId = "http://data.whicdn.com/images/179018121/large.jpg";
             this.posts = new HashSet<Post>();
+            this.CreatedOn = DateTime.Now;
         }
 
         [Index]

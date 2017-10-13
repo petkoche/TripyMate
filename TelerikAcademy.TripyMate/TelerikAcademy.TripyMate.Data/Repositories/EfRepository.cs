@@ -71,5 +71,10 @@ namespace TelerikAcademy.TripyMate.Data.Repositories
         {
             return this.context.Set<T>().Find(id);
         }
+
+        public T GetStr(string id)
+        {
+            return this.context.Set<T>().Find(id);
+        }
     }
 }

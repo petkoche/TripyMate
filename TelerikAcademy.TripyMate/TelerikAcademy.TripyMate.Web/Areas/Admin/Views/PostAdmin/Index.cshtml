@@ -1,0 +1,32 @@
+﻿@model TelerikAcademy.TripyMate.Web.Areas.Admin.Models.IndexViewModel
+@{
+    ViewBag.Title = "Index";
+}
+@using (Html.BeginForm("Index", "PostAdmin", new { area = "Admin" }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="row text-center">
+        <h1>New Post</h1>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Title, new { @class = "control-label" })
+        <div>
+            @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
+        </div>
+    </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Content, new { @class = "control-label" })
+            <div>
+                @Html.TextAreaFor(m => m.Content, new { @class = "form-control col-md-10", cols = 60, rows = 15, style = "min-width: 100%" })
+            </div>
+        </div>
+        <div class="row text-center">
+            <div class="form-group">
+                <div>
+                    <button type="submit" class="btn btn-primary">Add</button>
+                </div>
+            </div>
+        </div>
+}
