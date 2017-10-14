@@ -3,6 +3,7 @@ using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using TelerikAcademy.TripyMate.Data.Model;
@@ -58,7 +59,8 @@ namespace TelerikAcademy.TripyMate.Web.Controllers
         {
             var getPost = this.postsService.GetById(id);
 
-            var model = new PostViewModel() {
+            var model = new PostViewModel()
+            {
 
                 FirstName = getPost.Author.FirstName,
                 LastName = getPost.Author.LastName,
@@ -127,5 +129,42 @@ namespace TelerikAcademy.TripyMate.Web.Controllers
 
             return View();
         }
+
+
+        public ActionResult SearchPost()
+        {
+            var data = postsService
+                .GetAllNoLimit()
+                .AsQueryable()
+                .Select(PostViewModel.FromPost)
+                .ToList();
+
+            return this.View(data);
+        }
+
+        [HttpPost]
+        public ActionResult SearchPost(string query, string queryEnd)
+        {
+            var result = postsService
+                .GetAllNoLimit()
+                .AsQueryable()
+                .Where(post => post.StartTown.Name.ToLower().Contains(query.ToLower()))
+                .Where(post => post.EndTown.Name.ToLower().Contains(queryEnd.ToLower()))
+                .Select(PostViewModel.FromPost)
+                .ToList();
+
+            if (result.Count == 0)
+            {
+                var post = new PostViewModel()
+                {
+                    Title = "No results found! Try again with a different search!"
+                };
+
+                result.Add(post);
+            }
+
+            return this.View("SearchPost", result);
+        }
+
     }
 }

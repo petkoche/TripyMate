@@ -1,0 +1,24 @@
+﻿@model IEnumerable<TelerikAcademy.TripyMate.Web.Models.Post.PostViewModel>
+
+@foreach (var trip in Model)
+{
+    <div>
+        <strong>
+            @trip.Title
+            @trip.StartTown
+            @trip.EndTown
+            @trip.FirstName @trip.LastName
+        </strong>
+    </div>
+    if(trip.StartTown != null) { 
+    @Ajax.ActionLink("Read More", "Index", "Post", new { area = "", id = trip.ID },
+        new AjaxOptions
+        {
+            InsertionMode = InsertionMode.Replace,
+            UpdateTargetId = "post-content"
+        })
+
+    <br />
+    }
+}
+<div id="post-content"></div>

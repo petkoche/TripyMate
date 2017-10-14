@@ -33,6 +33,11 @@ namespace TelerikAcademy.TripyMate.Services
             return this.postsRepo.All.OrderByDescending(s => s.CreatedOn).Take(3);
         }
 
+        public IQueryable<Post> GetAllNoLimit()
+        {
+            return this.postsRepo.All.OrderByDescending(s => s.CreatedOn);
+        }
+
         public Post GetById(Guid id)
         {
             return this.postsRepo.Get(id);

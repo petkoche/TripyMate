@@ -1,0 +1,14 @@
+﻿@model List<TelerikAcademy.TripyMate.Web.Models.Post.PostViewModel>
+
+@{
+    ViewBag.Title = "Post Details";
+}
+<h2>@ViewBag.Title</h2>
+
+<div id="searchform">
+    @Html.Partial("_PostSearchForm")
+</div>
+
+<div id="results">
+    @Html.Partial("_PostResult", Model)
+</div>
