@@ -1,4 +1,15 @@
 ﻿@{
     ViewBag.Title = "Index";
 }
-@Html.ActionLink("Add New PostAdmin", "Index", "PostAdmin", new { area = "Admin" }, new { @class = "btn btn-default" })
+
+<div class="main-agileits">
+    <div class="mainw3-agileinfo form">
+        <div id="login">
+            <form action="#" method="post">
+                <div class="field-wrap">
+                    @Html.ActionLink("Create Post", "Index", "PostAdmin", new { area = "Admin" }, new { @class = "button button-block" })
+                    </div>
+            </form>
+        </div>
+    </div>
+</div>
