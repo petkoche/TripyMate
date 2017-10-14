@@ -1,8 +1,11 @@
-﻿using System;
+﻿using AutoMapper;
+using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TelerikAcademy.TripyMate.Data.Model;
 using TelerikAcademy.TripyMate.Services;
 using TelerikAcademy.TripyMate.Services.Contracts;
 using TelerikAcademy.TripyMate.Web.Models.Home;
@@ -13,10 +16,12 @@ namespace TelerikAcademy.TripyMate.Web.Controllers
     public class PostController : Controller
     {
         private readonly IPostsService postsService;
+        private readonly ITownService townService;
 
-        public PostController(IPostsService postsService)
+        public PostController(IPostsService postsService, ITownService townService)
         {
             this.postsService = postsService;
+            this.townService = townService;
         }
 
         public ActionResult Index()
@@ -68,6 +73,45 @@ namespace TelerikAcademy.TripyMate.Web.Controllers
             };
 
             return View(model);
+        }
+
+
+        public ActionResult Create()
+        {
+            var startTowns = this.townService.GetAllStartTowns().ToList().Select(x => Mapper.Map<StartTown>(x)).ToList();
+            var endTowns = this.townService.GetAllEndTowns().ToList().Select(x => Mapper.Map<EndTown>(x)).ToList();
+
+            var model = new PostCreateViewModel()
+            {
+                ID = Guid.NewGuid(),
+                StartTowns = startTowns,
+                EndTowns = endTowns
+            };
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(PostCreateViewModel model)
+        {
+            var post = Mapper.Map<PostCreateViewModel>(model);
+            Guid townName = model.StartTown;
+            Guid endTownName = model.EndTown;
+            string id = User.Identity.GetUserId();
+
+            var postMod = new Post()
+            {
+                ID = post.ID,
+                Content = post.Content,
+                Title = post.Title
+            };
+
+
+            var toPost = Mapper.Map<Post>(postMod);
+            this.postsService.CreatePost(toPost, id, townName, endTownName);
+
+            return RedirectToAction("Index", "Home", new { area = "" });
         }
 
         public ActionResult About()
