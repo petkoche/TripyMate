@@ -19,11 +19,13 @@ namespace TelerikAcademy.TripyMate.Web.Areas.Admin.Models
 
         public ICollection<StartTown> StartTowns { get; set; }
 
-        public IList<EndTown> EndTown { get; set; }
+        public ICollection<EndTown> EndTowns { get; set; }
 
         public string Content { get; set; }
 
         public Guid StartTown { get; set; }
+
+        public Guid EndTown { get; set; }
 
         public string Author { get; set; }
     }

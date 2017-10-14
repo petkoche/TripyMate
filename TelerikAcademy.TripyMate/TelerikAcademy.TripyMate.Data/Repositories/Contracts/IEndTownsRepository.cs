@@ -2,7 +2,7 @@
 
 namespace TelerikAcademy.TripyMate.Data.Repositories.Contracts
 {
-    public interface IStartTownsRepository : IEfRepository<StartTown>
+    public interface IEndTownsRepository : IEfRepository<EndTown>
     {
     }
 }

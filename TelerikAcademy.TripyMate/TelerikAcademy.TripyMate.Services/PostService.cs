@@ -15,12 +15,14 @@ namespace TelerikAcademy.TripyMate.Services
     {
         private readonly IPostRepository postsRepo;
         private readonly IStartTownsRepository startTownsRepo;
+        private readonly IEndTownsRepository endTownsRepo;
         private readonly IUserRepository userRepo;
         private readonly IUnitOfWork unitOfWork;
 
-        public PostsService(IPostRepository postsRepo, IUserRepository userRepo, IStartTownsRepository startTownsRepo, IUnitOfWork unitOfWork)
+        public PostsService(IPostRepository postsRepo, IUserRepository userRepo, IStartTownsRepository startTownsRepo, IEndTownsRepository endTownsRepo, IUnitOfWork unitOfWork)
         {
             this.startTownsRepo = startTownsRepo;
+            this.endTownsRepo = endTownsRepo;
             this.postsRepo = postsRepo;
             this.userRepo = userRepo;
             this.unitOfWork = unitOfWork;
@@ -36,11 +38,14 @@ namespace TelerikAcademy.TripyMate.Services
             return this.postsRepo.Get(id);
         }
 
-        public void CreatePost(Post post, string id, Guid idSt)
+        public void CreatePost(Post post, string id, Guid idSt, Guid idEn)
         {
             post.CreatedOn = DateTime.Now;
             post.Author = this.userRepo.GetStr(id);
-            post.StartTown = this.startTownsRepo.Get(idSt);
+            //var t1 = this.startTownsRepo.GetStr(idSt.ToString());
+            //var t2 = this.startTownsRepo.Get(idSt);
+            post.StartTownId = this.startTownsRepo.Get(idSt).ID;
+            post.EndTownId = this.endTownsRepo.Get(idEn).ID;
             this.postsRepo.Add(post);
             this.unitOfWork.Complete();
         }

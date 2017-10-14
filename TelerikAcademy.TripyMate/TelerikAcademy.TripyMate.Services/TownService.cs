@@ -13,10 +13,12 @@ namespace TelerikAcademy.TripyMate.Services
     public class TownService : ITownService
     {
         private readonly IStartTownsRepository startTownsRepo;
+        private readonly IEndTownsRepository endTownsRepo;
         private readonly IUnitOfWork unitOfWork;
 
-        public TownService(IStartTownsRepository startTownsRepo, IUnitOfWork unitOfWork)
+        public TownService(IStartTownsRepository startTownsRepo, IEndTownsRepository endTownsRepo, IUnitOfWork unitOfWork)
         {
+            this.endTownsRepo = endTownsRepo;
             this.startTownsRepo = startTownsRepo;
             this.unitOfWork = unitOfWork;
         }
@@ -31,19 +33,14 @@ namespace TelerikAcademy.TripyMate.Services
             return this.startTownsRepo.Get(id);
         }
 
-        public StartTown GetByNameStartTowns(string name)
+        public IQueryable<EndTown> GetAllEndTowns()
         {
-            return this.startTownsRepo.GetFirst(name);
+            return this.endTownsRepo.All;
         }
 
-        //public IQueryable<EndTown> GetAllEndTowns()
-        //{
-        //    return this.endTownsRepo.All.OrderByDescending(s => s.CreatedOn).Take(3);
-        //}
-
-        //public Post GetByIdEndTowns(Guid id)
-        //{
-        //    return this.endTownsRepo.Get(id);
-        //}
+        public EndTown GetByIdEndTowns(Guid id)
+        {
+            return this.endTownsRepo.Get(id);
+        }
     }
 }

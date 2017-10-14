@@ -3,12 +3,11 @@ using TelerikAcademy.TripyMate.Data.Repositories.Contracts;
 
 namespace TelerikAcademy.TripyMate.Data.Repositories
 {
-    public class StartTownsRepository : EfRepository<StartTown>, IStartTownsRepository
+    public class EndTownsRepository : EfRepository<EndTown>, IEndTownsRepository
     {
-        public StartTownsRepository(MsSqlDbContext context) 
+        public EndTownsRepository(MsSqlDbContext context)
             : base(context)
-        {            
+        {
         }
-        
     }
 }

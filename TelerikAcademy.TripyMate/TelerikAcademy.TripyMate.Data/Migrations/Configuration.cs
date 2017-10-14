@@ -130,7 +130,7 @@ namespace TelerikAcademy.TripyMate.Data.Migrations
                     };
 
                     context.EndTowns.Add(endTown);
-                } 
+                }
             }
         }
 
@@ -166,7 +166,9 @@ namespace TelerikAcademy.TripyMate.Data.Migrations
                         Title = "Post " + i,
                         Content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet lobortis nibh. Nullam bibendum, tortor quis porttitor fringilla, eros risus consequat orci, at scelerisque mauris dolor sit amet nulla.",
                         Author = context.Users.First(x => x.Email == tmpMail),
+                        StartTownId = context.StartTowns.First(x => x.Name == tmpTown).ID,
                         StartTown = context.StartTowns.First(x => x.Name == tmpTown),
+                        EndTownId = context.EndTowns.First(x => x.Name == tmpTown).ID,
                         EndTown = context.EndTowns.First(x => x.Name == tmpEndTown),
                         CreatedOn = DateTime.Now
                     };

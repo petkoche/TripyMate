@@ -9,7 +9,7 @@ using TelerikAcademy.TripyMate.Data.Model.Abstracts;
 
 namespace TelerikAcademy.TripyMate.Data.Model
 {
-    public class EndTown
+    public class EndTown : DataModel
     {
         public EndTown()
         {

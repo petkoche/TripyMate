@@ -91,6 +91,7 @@ namespace TelerikAcademy.TripyMate.Web.App_Start
             kernel.Bind<IPostRepository>().To<PostRepository>().InRequestScope();
             kernel.Bind<IUserRepository>().To<UserRepository>().InRequestScope();
             kernel.Bind<IStartTownsRepository>().To<StartTownsRepository>().InSingletonScope();
+            kernel.Bind<IEndTownsRepository>().To<EndTownsRepository>().InSingletonScope();
             kernel.Bind<IMapper>().To<Mapper>();
         }        
     }

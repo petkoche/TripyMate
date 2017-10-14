@@ -27,12 +27,14 @@ namespace TelerikAcademy.TripyMate.Web.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            var startTowns = this.townService.GetAllStartTowns().ToList().Select(x => Mapper.Map<StartTown>(x)).ToList();                                               
-            
+            var startTowns = this.townService.GetAllStartTowns().ToList().Select(x => Mapper.Map<StartTown>(x)).ToList();
+            var endTowns = this.townService.GetAllEndTowns().ToList().Select(x => Mapper.Map<EndTown>(x)).ToList();
+
             var model = new IndexViewModel()
             {
                 ID = Guid.NewGuid(),
-                StartTowns = startTowns                
+                StartTowns = startTowns,
+                EndTowns = endTowns
             };
 
             return View(model);
@@ -44,6 +46,7 @@ namespace TelerikAcademy.TripyMate.Web.Areas.Admin.Controllers
         {
             var post = Mapper.Map<IndexViewModel>(model);
             Guid townName = model.StartTown;
+            Guid endTownName = model.EndTown;
             string id = User.Identity.GetUserId();
 
             var postMod = new Post()
@@ -55,7 +58,7 @@ namespace TelerikAcademy.TripyMate.Web.Areas.Admin.Controllers
 
 
             var toPost = Mapper.Map<Post>(postMod);
-            this.postService.CreatePost(toPost, id, townName);
+            this.postService.CreatePost(toPost, id, townName, endTownName);
 
             return RedirectToAction("Index", "Home", new { area = "" });
         }

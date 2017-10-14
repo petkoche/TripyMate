@@ -25,7 +25,12 @@
 
         <div class="form-group">
             <label for="car">StartTown</label>
-            @Html.DropDownListFor(m => m.StartTown, new SelectList(Model.StartTowns, "ID", "Name"), "Select Start Town", new { @class = "form-control" })
+                @Html.DropDownListFor(m => m.StartTown, new SelectList(Model.StartTowns, "ID", "Name"), "Select Start Town", new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            <label for="car">StartTown</label>
+                @Html.DropDownListFor(m => m.EndTown, new SelectList(Model.EndTowns, "ID", "Name"), "Select End Town", new { @class = "form-control" })
         </div>
 
         <div class="row text-center">

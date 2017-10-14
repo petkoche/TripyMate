@@ -1,5 +1,4 @@
-﻿
-namespace TelerikAcademy.TripyMate.Services.Contracts
+﻿namespace TelerikAcademy.TripyMate.Services.Contracts
 {
     public interface IService
     {

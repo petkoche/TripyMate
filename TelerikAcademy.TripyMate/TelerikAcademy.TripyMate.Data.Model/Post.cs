@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations.Schema;
 using TelerikAcademy.TripyMate.Data.Model.Abstracts;
 
 namespace TelerikAcademy.TripyMate.Data.Model
@@ -22,9 +19,14 @@ namespace TelerikAcademy.TripyMate.Data.Model
 
         public virtual User Author { get; set; }
 
-        public StartTown StartTown { get; set; }
+        public Guid StartTownId { get; set; }
 
+        [ForeignKey("StartTownId")]
+        public virtual StartTown StartTown { get; set; }
+
+        public Guid EndTownId { get; set; }
+
+        [ForeignKey("EndTownId")]
         public virtual EndTown EndTown { get; set; }
-
     }
 }

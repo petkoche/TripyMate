@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TelerikAcademy.TripyMate.Data.Model;
-using TelerikAcademy.TripyMate.Data.Repositories.Contracts;
 
 namespace TelerikAcademy.TripyMate.Services.Contracts
 {
@@ -14,6 +10,8 @@ namespace TelerikAcademy.TripyMate.Services.Contracts
 
         StartTown GetByIdStartTowns(Guid id);
 
-        StartTown GetByNameStartTowns(string name);
+        IQueryable<EndTown> GetAllEndTowns();
+
+        EndTown GetByIdEndTowns(Guid id);
     }
 }

@@ -85,14 +85,32 @@
     <Compile Include="Migrations\201710140948376_one to many.Designer.cs">
       <DependentUpon>201710140948376_one to many.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710141049073_new mode.cs" />
+    <Compile Include="Migrations\201710141049073_new mode.Designer.cs">
+      <DependentUpon>201710141049073_new mode.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710141056353_ret.cs" />
+    <Compile Include="Migrations\201710141056353_ret.Designer.cs">
+      <DependentUpon>201710141056353_ret.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710141143157_234535.cs" />
+    <Compile Include="Migrations\201710141143157_234535.Designer.cs">
+      <DependentUpon>201710141143157_234535.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710141329205_fixing foreign keys.cs" />
+    <Compile Include="Migrations\201710141329205_fixing foreign keys.Designer.cs">
+      <DependentUpon>201710141329205_fixing foreign keys.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MsSqlDbContex.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\Contracts\IEndTownsRepository.cs" />
     <Compile Include="Repositories\Contracts\IPostRepository.cs" />
     <Compile Include="Repositories\Contracts\IStartTownsRepository.cs" />
     <Compile Include="Repositories\Contracts\IUserRepository.cs" />
     <Compile Include="Repositories\EfRepository.cs" />
     <Compile Include="Repositories\Contracts\IEfRepository.cs" />
+    <Compile Include="Repositories\EndTownsRepository.cs" />
     <Compile Include="Repositories\PostRepository.cs" />
     <Compile Include="Repositories\StartTownsRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
@@ -130,6 +148,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710140948376_one to many.resx">
       <DependentUpon>201710140948376_one to many.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710141049073_new mode.resx">
+      <DependentUpon>201710141049073_new mode.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710141056353_ret.resx">
+      <DependentUpon>201710141056353_ret.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710141143157_234535.resx">
+      <DependentUpon>201710141143157_234535.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710141329205_fixing foreign keys.resx">
+      <DependentUpon>201710141329205_fixing foreign keys.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
