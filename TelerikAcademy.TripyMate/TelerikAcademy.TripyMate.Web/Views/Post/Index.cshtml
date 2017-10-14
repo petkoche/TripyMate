@@ -41,20 +41,16 @@
  
 </head>
 <body>
-    <div class="row text-center">
-        <h1>@Model.PostedOn</h1>
-    </div>
-    <div class="row">
-        <div class="col-md-3">
-            <p class="pre-wrap">@Model.StartTown - > @Model.EndTown</p>
-        </div>
-        <div class="col-md-9">
-            <p class="pre-wrap">@Model.Content</p>
-        </div>
-    </div>
+    @Html.AntiForgeryToken()
+    <h4>@Model.StartTown ⇨ @Model.EndTown</h4>
+    @{
+        var p = DateTime.Now - Model.PostedOn;
+        int m;
+    }
+    Posted : @p.Hours hours and @p.Minutes minutes ago !
 
-    <h3>My Google Maps Demo</h3>
-
+    <hr />
+    <h3>Estimated route. </h3>
     <div id="floating-panel">
         <b>Start: </b>
         <select id="start">
@@ -68,9 +64,37 @@
     <div id="map"></div>
     &nbsp;
     <div id="warnings-panel"></div>
-
-
-
+    <div class="row text-center">
+    </div>
+    <div class="main-agileits">
+        <div class="mainw3-agileinfo form" style="background:rgba(0, 0, 0, 0.60);width:100%; border-radius: 5px;">
+            <div id="login">
+                <div class="row textMad" style="color:#FFF;font-weight: bold;">
+                    <div class="col-md-2">
+                        <img src="@Model.PhotoId" class="roundImg" />
+                    </div>
+                    <div class="col-md-3">
+                        <form action="#" method="post">
+                            <div class="field-wrap text-center">
+                                <div class="row text-center">
+                                    <br /><br />
+                                    <p> Driv3r: <span class="textWhiteMad">@Model.FirstName @Model.LastName</span></p>
+                                    <p> Call me : <span class="textWhiteMad">@Model.PhoneNumber</span></p>
+                                    <p><span class="textWhiteMad"> @Model.AuthorEmail </span> </p>
+                                </div>
+                            </div>
+                    </div>
+                    <div class="col-md-7">
+                        <div class="field-wrap">
+                            <h4>@Model.Title</h4>
+                            <hr />
+                            <p>@Model.Content</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="~/Scripts/gmapsapi.js"></script>
     <script async defer

@@ -428,3 +428,14 @@ a.clear {
 a:hover {
         text-decoration: none;
 }
+.textMad{
+    color:#31d191;
+    font-weight: bold;
+}
+.textWhiteMad{
+    color:#FFF;
+    font-weight: bold;
+}
+.textMargin{
+    margin-top: 50px;
+}
