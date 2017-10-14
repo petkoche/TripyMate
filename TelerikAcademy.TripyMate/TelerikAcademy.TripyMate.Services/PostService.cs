@@ -14,11 +14,13 @@ namespace TelerikAcademy.TripyMate.Services
     public class PostsService : IPostsService
     {
         private readonly IPostRepository postsRepo;
+        private readonly IStartTownsRepository startTownsRepo;
         private readonly IUserRepository userRepo;
         private readonly IUnitOfWork unitOfWork;
 
-        public PostsService(IPostRepository postsRepo, IUserRepository userRepo, IUnitOfWork unitOfWork)
+        public PostsService(IPostRepository postsRepo, IUserRepository userRepo, IStartTownsRepository startTownsRepo, IUnitOfWork unitOfWork)
         {
+            this.startTownsRepo = startTownsRepo;
             this.postsRepo = postsRepo;
             this.userRepo = userRepo;
             this.unitOfWork = unitOfWork;
@@ -34,10 +36,11 @@ namespace TelerikAcademy.TripyMate.Services
             return this.postsRepo.Get(id);
         }
 
-        public void CreatePost(Post post, string id)
+        public void CreatePost(Post post, string id, Guid idSt)
         {
             post.CreatedOn = DateTime.Now;
             post.Author = this.userRepo.GetStr(id);
+            post.StartTown = this.startTownsRepo.Get(idSt);
             this.postsRepo.Add(post);
             this.unitOfWork.Complete();
         }

@@ -15,19 +15,24 @@ namespace TelerikAcademy.TripyMate.Web.Areas.Admin.Controllers
     public class PostAdminController : Controller
     {
         private readonly IPostsService postService;
+        private readonly ITownService townService;
 
-        public PostAdminController(IPostsService postService)
+        public PostAdminController(IPostsService postService, ITownService townService)
         {
             this.postService = postService;
+            this.townService = townService;
         }
 
         // GET: Admin/Recipе
         [HttpGet]
         public ActionResult Index()
-        {            
+        {
+            var startTowns = this.townService.GetAllStartTowns().ToList().Select(x => Mapper.Map<StartTown>(x)).ToList();                                               
+            
             var model = new IndexViewModel()
             {
-                ID = Guid.NewGuid()
+                ID = Guid.NewGuid(),
+                StartTowns = startTowns                
             };
 
             return View(model);
@@ -37,9 +42,20 @@ namespace TelerikAcademy.TripyMate.Web.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Index(IndexViewModel model)
         {
-            var post = Mapper.Map<Post>(model);
+            var post = Mapper.Map<IndexViewModel>(model);
+            Guid townName = model.StartTown;
             string id = User.Identity.GetUserId();
-            this.postService.CreatePost(post, id);
+
+            var postMod = new Post()
+            {
+                ID = post.ID,
+                Content = post.Content,
+                Title = post.Title
+            };
+
+
+            var toPost = Mapper.Map<Post>(postMod);
+            this.postService.CreatePost(toPost, id, townName);
 
             return RedirectToAction("Index", "Home", new { area = "" });
         }

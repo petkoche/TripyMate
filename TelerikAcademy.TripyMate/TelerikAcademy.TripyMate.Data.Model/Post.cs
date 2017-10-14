@@ -22,8 +22,9 @@ namespace TelerikAcademy.TripyMate.Data.Model
 
         public virtual User Author { get; set; }
 
-        public virtual StartTown StartTown { get; set; }
+        public StartTown StartTown { get; set; }
 
         public virtual EndTown EndTown { get; set; }
+
     }
 }

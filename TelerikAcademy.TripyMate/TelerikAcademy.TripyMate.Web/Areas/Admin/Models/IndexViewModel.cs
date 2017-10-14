@@ -1,10 +1,12 @@
 ﻿using System;
 using TelerikAcademy.TripyMate.Web.Infreastructure;
 using TelerikAcademy.TripyMate.Data.Model;
+using System.Collections.Generic;
+using TelerikAcademy.TripyMate.Web.Areas.Admin.Models;
 
 namespace TelerikAcademy.TripyMate.Web.Areas.Admin.Models
 {
-    public class IndexViewModel : IMapFrom<Post>
+    public class IndexViewModel : IMapFrom<Data.Model.Post>
     {
         public IndexViewModel()
         {
@@ -15,7 +17,13 @@ namespace TelerikAcademy.TripyMate.Web.Areas.Admin.Models
 
         public string Title { get; set; }
 
+        public ICollection<StartTown> StartTowns { get; set; }
+
+        public IList<EndTown> EndTown { get; set; }
+
         public string Content { get; set; }
+
+        public Guid StartTown { get; set; }
 
         public string Author { get; set; }
     }

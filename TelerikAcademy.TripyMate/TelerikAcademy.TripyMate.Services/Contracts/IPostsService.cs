@@ -8,6 +8,6 @@ namespace TelerikAcademy.TripyMate.Services.Contracts
     {
         IQueryable<Post> GetAll();
         Post GetById(Guid id);
-        void CreatePost(Post post, string id);
+        void CreatePost(Post post, string id, Guid idSt);
     }
 }

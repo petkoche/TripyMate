@@ -8,15 +8,15 @@ using TelerikAcademy.TripyMate.Web.Infreastructure;
 
 namespace TelerikAcademy.TripyMate.Web.Areas.Admin.Models
 {
-    public class NewPostViewModel : IMapFrom<Post>
+    public class NewPostViewModel : IMapFrom<Data.Model.Post>
     {
         public Guid ID { get; set; }
 
         public string Title { get; set; }
 
-        public string StartTown { get; set; }
+        public IList<StartTown> StartTown { get; set; }
 
-        public string EndTown { get; set; }
+        public IList<EndTown> EndTown { get; set; }
 
         public string Content { get; set; }
 

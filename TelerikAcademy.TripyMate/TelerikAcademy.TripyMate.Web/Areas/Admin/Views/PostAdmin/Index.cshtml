@@ -22,6 +22,12 @@
                 @Html.TextAreaFor(m => m.Content, new { @class = "form-control col-md-10", cols = 60, rows = 15, style = "min-width: 100%" })
             </div>
         </div>
+
+        <div class="form-group">
+            <label for="car">StartTown</label>
+            @Html.DropDownListFor(m => m.StartTown, new SelectList(Model.StartTowns, "ID", "Name"), "Select Start Town", new { @class = "form-control" })
+        </div>
+
         <div class="row text-center">
             <div class="form-group">
                 <div>

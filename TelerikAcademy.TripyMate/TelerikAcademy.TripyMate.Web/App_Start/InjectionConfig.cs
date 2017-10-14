@@ -90,6 +90,7 @@ namespace TelerikAcademy.TripyMate.Web.App_Start
             kernel.Bind(typeof(IEfRepository<>)).To(typeof(EfRepository<>));
             kernel.Bind<IPostRepository>().To<PostRepository>().InRequestScope();
             kernel.Bind<IUserRepository>().To<UserRepository>().InRequestScope();
+            kernel.Bind<IStartTownsRepository>().To<StartTownsRepository>().InSingletonScope();
             kernel.Bind<IMapper>().To<Mapper>();
         }        
     }
