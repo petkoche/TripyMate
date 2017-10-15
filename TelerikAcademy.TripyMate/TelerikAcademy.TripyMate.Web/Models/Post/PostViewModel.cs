@@ -1,11 +1,8 @@
 ﻿namespace TelerikAcademy.TripyMate.Web.Models.Post
 {
     using System;
-    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    using System.Linq;
     using System.Linq.Expressions;
-    using System.Web;
     using TelerikAcademy.TripyMate.Data.Model;
 
     public class PostViewModel
@@ -33,22 +30,38 @@
 
         public Guid ID { get; set; }
 
+        [Required]
+        [MaxLength(60)]
         public string PhotoId { get; set; }
 
+        [Required]
+        [MaxLength(10)]
         public string FirstName { get; set; }
 
+        [Required]
+        [MaxLength(10)]
         public string LastName { get; set; }
 
+        [Required]
+        [MaxLength(10)]
+        [MinLength(10)]
         public string PhoneNumber { get; set; }
 
+        [Required]
+        [MaxLength(30)]
         public string Title { get; set; }
 
         public string StartTown { get; set; }
 
         public string EndTown { get; set; }
 
+        [Required]
+        [MaxLength(60)]
         public string Content { get; set; }
 
+        [Required]
+        [MaxLength(60)]
+        [EmailAddress]
         public string AuthorEmail { get; set; }
 
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]

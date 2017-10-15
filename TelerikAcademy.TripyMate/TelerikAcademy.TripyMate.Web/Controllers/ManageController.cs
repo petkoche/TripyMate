@@ -7,6 +7,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using TelerikAcademy.TripyMate.Web.Models;
+using TelerikAcademy.TripyMate.Web.Models.Manage;
 
 namespace TelerikAcademy.TripyMate.Web.Controllers
 {

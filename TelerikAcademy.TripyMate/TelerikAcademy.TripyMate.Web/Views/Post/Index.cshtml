@@ -45,7 +45,6 @@
     <h4>@Model.StartTown ⇨ @Model.EndTown</h4>
     @{
         var p = DateTime.Now - Model.PostedOn;
-        int m;
     }
     Posted : @p.Hours hours and @p.Minutes minutes ago !
 
@@ -83,6 +82,7 @@
                                     <p><span class="textWhiteMad"> @Model.AuthorEmail </span> </p>
                                 </div>
                             </div>
+                          </form>
                     </div>
                     <div class="col-md-7">
                         <div class="field-wrap">
