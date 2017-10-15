@@ -22,10 +22,40 @@ namespace TelerikAcademy.TripyMate.Services
 
         public PostsService(IPostRepository postsRepo, IUserRepository userRepo, IStartTownsRepository startTownsRepo, IEndTownsRepository endTownsRepo, IUnitOfWork unitOfWork)
         {
+
+            if (startTownsRepo == null)
+            {
+                throw new ArgumentNullException();
+            }
+
             this.startTownsRepo = startTownsRepo;
+
+            if (endTownsRepo == null)
+            {
+                throw new ArgumentNullException();
+            }
+
             this.endTownsRepo = endTownsRepo;
+
+            if (postsRepo == null)
+            {
+                throw new ArgumentNullException();
+            }
+
             this.postsRepo = postsRepo;
+
+            if (userRepo == null)
+            {
+                throw new ArgumentNullException();
+            }
+
             this.userRepo = userRepo;
+
+            if (unitOfWork == null)
+            {
+                throw new ArgumentNullException();
+            }
+
             this.unitOfWork = unitOfWork;
         }
 

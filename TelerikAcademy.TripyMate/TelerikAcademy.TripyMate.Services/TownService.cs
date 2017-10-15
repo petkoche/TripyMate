@@ -18,29 +18,70 @@ namespace TelerikAcademy.TripyMate.Services
 
         public TownService(IStartTownsRepository startTownsRepo, IEndTownsRepository endTownsRepo, IUnitOfWork unitOfWork)
         {
+            if (endTownsRepo == null)
+            {
+                throw new ArgumentNullException();
+            }
+
             this.endTownsRepo = endTownsRepo;
+
+            if (startTownsRepo == null)
+            {
+                throw new ArgumentNullException();
+            }
+
             this.startTownsRepo = startTownsRepo;
+
+            if (unitOfWork == null)
+            {
+                throw new ArgumentNullException();
+            }
+
             this.unitOfWork = unitOfWork;
         }
 
         public IQueryable<StartTown> GetAllStartTowns()
         {
-            return this.startTownsRepo.All;
+            var towns = this.startTownsRepo.All;
+            if (towns == null)
+            {
+                throw new NullReferenceException("Town not found");
+            }
+
+            return towns;
         }
 
         public StartTown GetByIdStartTowns(Guid id)
         {
-            return this.startTownsRepo.Get(id);
+            var town = this.startTownsRepo.Get(id);
+            if (town == null)
+            {
+                throw new NullReferenceException("Town not found");
+            }
+
+            return town;
         }
 
         public IQueryable<EndTown> GetAllEndTowns()
         {
-            return this.endTownsRepo.All;
+            var towns = this.endTownsRepo.All;
+            if (towns == null)
+            {
+                throw new NullReferenceException("Town not found");
+            }
+
+            return towns;
         }
 
         public EndTown GetByIdEndTowns(Guid id)
         {
-            return this.endTownsRepo.Get(id);
+            var towns = this.endTownsRepo.Get(id);
+            if (towns == null)
+            {
+                throw new NullReferenceException("Town not found");
+            }
+
+            return towns;
         }
     }
 }

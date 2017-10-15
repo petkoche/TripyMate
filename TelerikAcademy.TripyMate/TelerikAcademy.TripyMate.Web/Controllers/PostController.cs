@@ -21,6 +21,16 @@ namespace TelerikAcademy.TripyMate.Web.Controllers
 
         public PostController(IPostsService postsService, ITownService townService)
         {
+            if (postsService == null)
+            {
+                throw new ArgumentNullException();
+            }
+
+            if (townService == null)
+            {
+                throw new ArgumentNullException();
+            }
+
             this.postsService = postsService;
             this.townService = townService;
         }
@@ -60,8 +70,7 @@ namespace TelerikAcademy.TripyMate.Web.Controllers
             var getPost = this.postsService.GetById(id);
 
             var model = new PostViewModel()
-            {
-
+            {              
                 FirstName = getPost.Author.FirstName,
                 LastName = getPost.Author.LastName,
                 PhoneNumber = getPost.Author.PhoneNumber,

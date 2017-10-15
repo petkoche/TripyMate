@@ -19,6 +19,16 @@ namespace TelerikAcademy.TripyMate.Web.Areas.Admin.Controllers
 
         public PostAdminController(IPostsService postService, ITownService townService)
         {
+            if (postService == null)
+            {
+                throw new ArgumentNullException();
+            }
+
+            if (townService == null)
+            {
+                throw new ArgumentNullException();
+            }
+
             this.postService = postService;
             this.townService = townService;
         }
