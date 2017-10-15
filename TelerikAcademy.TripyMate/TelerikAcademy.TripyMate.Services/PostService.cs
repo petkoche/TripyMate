@@ -8,6 +8,7 @@ using TelerikAcademy.TripyMate.Data.Repositories;
 using TelerikAcademy.TripyMate.Data.Repositories.Contracts;
 using TelerikAcademy.TripyMate.Data.UnitOfWork;
 using TelerikAcademy.TripyMate.Services.Contracts;
+using TelerikAcademy.TripyMate.Services.Model;
 
 namespace TelerikAcademy.TripyMate.Services
 {
@@ -47,13 +48,60 @@ namespace TelerikAcademy.TripyMate.Services
         {
             post.CreatedOn = DateTime.Now;
             post.Author = this.userRepo.GetStr(id);
-            //var t1 = this.startTownsRepo.GetStr(idSt.ToString());
-            //var t2 = this.startTownsRepo.Get(idSt);
             post.StartTownId = this.startTownsRepo.Get(idSt).ID;
             post.EndTownId = this.endTownsRepo.Get(idEn).ID;
+
             this.postsRepo.Add(post);
             this.unitOfWork.Complete();
         }
 
+        public void DeletePost(Guid postId)
+        {
+            var post = this.postsRepo.Get(postId);
+            if (post == null)
+            {
+                throw new NullReferenceException("Post not found");
+            }
+
+            post.IsDeleted = true;
+            this.postsRepo.Update(post);
+
+            this.unitOfWork.Complete();
+        }
+
+        public void EditPost(Guid postid, string content)
+        {
+            var post = this.postsRepo.Get(postid);
+            if (post == null)
+            {
+                throw new NullReferenceException("Post not found");
+            }
+
+            post.Content = content;
+            post.ModifiedOn = DateTime.Now;
+            this.postsRepo.Update(post);
+
+            this.unitOfWork.Complete();
+        }
+
+        public void EditPost(Guid postId, PostServiceModel model)
+        {
+            var post = this.postsRepo.Get(postId);
+            if (post == null)
+            {
+                throw new NullReferenceException("Post not found");
+            }
+
+            post.Content = model.Content;
+            post.IsDeleted = model.IsDeleted;
+            this.postsRepo.Update(post);
+
+            this.unitOfWork.Complete();
+        }
+
+        public ICollection<Post> GetAllList()
+        {
+            return this.postsRepo.All.ToList();
+        }
     }
 }

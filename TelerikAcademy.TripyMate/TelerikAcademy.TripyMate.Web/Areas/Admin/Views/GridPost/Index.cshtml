@@ -1,0 +1,48 @@
+﻿@using Kendo.Mvc.UI
+@model ICollection<TelerikAcademy.TripyMate.Web.Areas.Admin.Models.GridPostViewModel>
+@{
+    ViewBag.Title = "Index";
+}
+<br /><br /><br /><br />
+<div class="row mt-5">
+
+</div>
+<div class="row mt-5">
+    @(Html.Kendo()
+    .Grid(Model)
+    .Name("grid")
+    .Columns(columns =>
+    {
+        columns.Bound(c => c.Title);
+        columns.Bound(c => c.CreatedOn).Format("{0:MM/dd/yyyy H:mm:ss}");
+        columns.Bound(c => c.IsDeleted).Title("Deleted");
+        columns.Bound(c => c.Content);
+        columns.Command(command => { command.Edit(); command.Destroy(); }).Width(250);
+    })
+    .Editable(editable => editable.Mode(GridEditMode.PopUp))
+    .Pageable(p =>
+    {
+        p.PageSizes(true);
+        p.Refresh(true);
+    })
+    .Sortable()
+    .Scrollable()
+    .Filterable()
+    .HtmlAttributes(new { style = "height:1000px;" })
+    .DataSource(dataSource => dataSource
+        .Ajax()
+        .PageSize(5)
+        .Model(model =>
+        {
+            model.Id(c => c.ID);
+            model.Field(c => c.ID).Editable(false);
+            model.Field(c => c.Content).Editable(false);
+            model.Field(c => c.Author).Editable(false);
+        })
+        .Read(read => read.Action("GetPosts", "GridPost", new { area = "Admin" }))
+        .Update(update => update.Action("UpdatePost", "GridPost", new { area = "Admin" }))
+        .Destroy(update => update.Action("DeletePost", "GridPost", new { area = "Admin" }))
+     )
+    .Deferred()
+    )
+</div>

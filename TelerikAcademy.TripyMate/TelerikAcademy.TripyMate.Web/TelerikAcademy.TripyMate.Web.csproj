@@ -48,6 +48,10 @@
       <HintPath>..\packages\AutoMapper.6.1.1\lib\net45\AutoMapper.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Kendo.Mvc, Version=2017.3.913.545, Culture=neutral, PublicKeyToken=121fae78165ba3d4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\Kendo.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=2.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.0.6\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
       <Private>True</Private>
@@ -223,7 +227,9 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\GridPostController.cs" />
     <Compile Include="Areas\Admin\Controllers\PostAdminController.cs" />
+    <Compile Include="Areas\Admin\Models\GridPostViewModel.cs" />
     <Compile Include="Areas\Admin\Models\IndexViewModel.cs" />
     <Compile Include="Areas\Admin\Models\NewPostStartTownViewModel.cs" />
     <Compile Include="Areas\Admin\Models\NewPostViewModel.cs" />
@@ -247,10 +253,32 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Kendo\Bootstrap\editor.png" />
+    <Content Include="Content\Kendo\Bootstrap\imagebrowser.png" />
+    <Content Include="Content\Kendo\Bootstrap\indeterminate.gif" />
+    <Content Include="Content\Kendo\Bootstrap\loading-image.gif" />
+    <Content Include="Content\Kendo\Bootstrap\loading.gif" />
+    <Content Include="Content\Kendo\Bootstrap\loading_2x.gif" />
+    <Content Include="Content\Kendo\Bootstrap\markers.png" />
+    <Content Include="Content\Kendo\Bootstrap\markers_2x.png" />
+    <Content Include="Content\Kendo\Bootstrap\slider-h.gif" />
+    <Content Include="Content\Kendo\Bootstrap\slider-v.gif" />
+    <Content Include="Content\Kendo\Bootstrap\sprite.png" />
+    <Content Include="Content\Kendo\Bootstrap\sprite_2x.png" />
+    <Content Include="Content\Kendo\Bootstrap\sprite_kpi.png" />
+    <Content Include="Content\Kendo\Bootstrap\sprite_kpi_2x.png" />
+    <Content Include="Content\Kendo\fonts\DejaVu\LICENSE.txt" />
+    <Content Include="Content\Kendo\fonts\glyphs\KendoUIGlyphs.svg" />
+    <Content Include="Content\Kendo\fonts\glyphs\WebComponentsIcons.svg" />
+    <Content Include="Content\Kendo\kendo.bootstrap.min.css" />
+    <Content Include="Content\Kendo\kendo.bootstrap.mobile.min.css" />
+    <Content Include="Content\Kendo\kendo.common-bootstrap.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Libraries\Kendo.Mvc.dll" />
+    <Content Include="Libraries\Kendo.Mvc.xml" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -260,16 +288,43 @@
     <Content Include="Areas\Admin\Views\Admin\Index.cshtml" />
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Admin\Views\PostAdmin\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\GridPost\Index.cshtml" />
+    <Content Include="Content\Kendo\kendo.bootstrap.min.css.map" />
+    <Content Include="Content\Kendo\kendo.bootstrap.mobile.min.css.map" />
+    <Content Include="Content\Kendo\kendo.common-bootstrap.min.css.map" />
+    <Content Include="Content\Kendo\fonts\DejaVu\DejaVuSans-Bold.ttf" />
+    <Content Include="Content\Kendo\fonts\DejaVu\DejaVuSans-BoldOblique.ttf" />
+    <Content Include="Content\Kendo\fonts\DejaVu\DejaVuSans-ExtraLight.ttf" />
+    <Content Include="Content\Kendo\fonts\DejaVu\DejaVuSans-Oblique.ttf" />
+    <Content Include="Content\Kendo\fonts\DejaVu\DejaVuSans.ttf" />
+    <Content Include="Content\Kendo\fonts\DejaVu\DejaVuSansMono-Bold.ttf" />
+    <Content Include="Content\Kendo\fonts\DejaVu\DejaVuSansMono-BoldOblique.ttf" />
+    <Content Include="Content\Kendo\fonts\DejaVu\DejaVuSansMono-Oblique.ttf" />
+    <Content Include="Content\Kendo\fonts\DejaVu\DejaVuSansMono.ttf" />
+    <Content Include="Content\Kendo\fonts\DejaVu\DejaVuSerif-Bold.ttf" />
+    <Content Include="Content\Kendo\fonts\DejaVu\DejaVuSerif-BoldItalic.ttf" />
+    <Content Include="Content\Kendo\fonts\DejaVu\DejaVuSerif-Italic.ttf" />
+    <Content Include="Content\Kendo\fonts\DejaVu\DejaVuSerif.ttf" />
+    <Content Include="Content\Kendo\fonts\glyphs\KendoUIGlyphs.eot" />
+    <Content Include="Content\Kendo\fonts\glyphs\KendoUIGlyphs.ttf" />
+    <Content Include="Content\Kendo\fonts\glyphs\KendoUIGlyphs.woff" />
+    <Content Include="Content\Kendo\fonts\glyphs\WebComponentsIcons.eot" />
+    <Content Include="Content\Kendo\fonts\glyphs\WebComponentsIcons.ttf" />
+    <Content Include="Content\Kendo\fonts\glyphs\WebComponentsIcons.woff" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\FormJs.js" />
     <Content Include="Scripts\gmapsapi.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\Kendo\kendo.aspnetmvc.min.js" />
+    <Content Include="Scripts\Kendo\kendo.web.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
@@ -314,6 +369,8 @@
     <Content Include="Views\Post\SearchPost.cshtml" />
     <Content Include="Views\Shared\_PostResult.cshtml" />
     <Content Include="Views\Shared\_PostSearchForm.cshtml" />
+    <Content Include="Scripts\Kendo\kendo.aspnetmvc.min.js.map" />
+    <Content Include="Scripts\Kendo\kendo.web.min.js.map" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

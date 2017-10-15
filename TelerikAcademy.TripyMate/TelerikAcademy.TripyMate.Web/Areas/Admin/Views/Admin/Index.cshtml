@@ -8,7 +8,10 @@
             <form action="#" method="post">
                 <div class="field-wrap">
                     @Html.ActionLink("Create Post", "Index", "PostAdmin", new { area = "Admin" }, new { @class = "button button-block" })
-                    </div>
+                </div>
+                <div class="field-wrap">
+                    @Html.ActionLink("Manage Posts", "Index", "GridPost", new { area = "Admin" }, new { @class = "button button-block" })
+                </div>
             </form>
         </div>
     </div>
