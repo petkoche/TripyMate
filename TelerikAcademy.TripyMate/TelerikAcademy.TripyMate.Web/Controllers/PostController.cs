@@ -163,7 +163,7 @@ namespace TelerikAcademy.TripyMate.Web.Controllers
                 result.Add(post);
             }
 
-            return this.View("SearchPost", result);
+            return this.PartialView("_PostResult", result);
         }
 
     }
