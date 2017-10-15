@@ -2,23 +2,37 @@
 
 @foreach (var trip in Model)
 {
-    <div>
-        <strong>
-            @trip.Title
-            @trip.StartTown
-            @trip.EndTown
-            @trip.FirstName @trip.LastName
-        </strong>
-    </div>
-    if(trip.StartTown != null) { 
-    @Ajax.ActionLink("Read More", "Index", "Post", new { area = "", id = trip.ID },
+    if (trip.StartTown != null)
+    {
+      <div>
+        <div class="row">
+            <div class="col-md-2">
+                <strong>@trip.PostedOn.Date</strong>
+            </div>
+            <div class="col-md-2">
+                <strong>@trip.Title</strong>
+            </div>
+            <div class="col-md-2">
+                <strong>@trip.StartTown to @trip.EndTown</strong>
+            </div>
+            <div class="col-md-4">
+                <strong>by : @trip.FirstName @trip.LastName</strong>
+            </div>
+            <div class="col-md-2">
+                <strong>@Ajax.ActionLink("Read More", "Index", "Post", new { area = "", id = trip.ID },
         new AjaxOptions
         {
             InsertionMode = InsertionMode.Replace,
             UpdateTargetId = "post-content"
-        })
-
+        })</strong>
+            </div>
+        </div>
+    </div>
     <br />
+    }
+    else
+    {
+        <strong class="center">There were no results please try another search !</strong>
     }
 }
 <div id="post-content"></div>

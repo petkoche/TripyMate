@@ -1,9 +1,11 @@
 ﻿@model List<TelerikAcademy.TripyMate.Web.Models.Post.PostViewModel>
 
 @{
-    ViewBag.Title = "Post Details";
+    ViewBag.Title = "Post Search";
 }
 <h2>@ViewBag.Title</h2>
+<h4>Search for a trip by start and end destination.</h4>
+<hr />
 
 <div id="searchform">
     @Html.Partial("_PostSearchForm")
@@ -12,3 +14,7 @@
 <div id="results">
     @Html.Partial("_PostResult", Model)
 </div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/formjs")
+}

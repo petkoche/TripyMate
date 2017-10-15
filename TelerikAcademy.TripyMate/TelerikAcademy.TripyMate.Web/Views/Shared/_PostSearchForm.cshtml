@@ -6,7 +6,25 @@
                                             HttpMethod = "POST"
                                         }, new { id = "searchForm" }))
 {
-    <input type="text" required name="query" />
-    <input type="text" requierd name="queryEnd" />
-    <input type="submit" />
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+    <div class="main-agileits">
+        <div class="mainw3-agileinfo form">
+            <div id="login">
+                <form action="#" method="post">
+                    <div class="field-wrap">
+                        <input type="text" required maxlength="10" name="query" />
+                    </div>
+                    <div class="field-wrap">
+                        <input type="text" required maxlength="10" name="queryEnd" />
+                    </div>
+                    <input type="submit" class="button button-block" value="Search" />
+                </form>
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/formjs")
 }
