@@ -19,7 +19,7 @@
                 <strong>by : @trip.FirstName @trip.LastName</strong>
             </div>
             <div class="col-md-2">
-                <strong>@Ajax.ActionLink("Read More", "Index", "Post", new { area = "", id = trip.ID },
+                <strong>@Html.ActionLink("Read More", "Index", "Post", new { area = "", id = trip.ID },
         new AjaxOptions
         {
             InsertionMode = InsertionMode.Replace,

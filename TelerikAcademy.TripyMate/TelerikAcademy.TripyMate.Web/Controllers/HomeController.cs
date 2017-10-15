@@ -19,6 +19,7 @@ namespace TelerikAcademy.TripyMate.Web.Controllers
             this.postsService = postsService;
         }
 
+        [OutputCache(Duration = 30)]
         public ActionResult Index()
         {
             var posts = this.postsService
