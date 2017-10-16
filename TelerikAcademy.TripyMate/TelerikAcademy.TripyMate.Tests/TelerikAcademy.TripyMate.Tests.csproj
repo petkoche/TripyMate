@@ -127,6 +127,8 @@
     <Compile Include="Controllers\PostControllerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\HomeControllerTest.cs" />
+    <Compile Include="Services\PostServiceTests.cs" />
+    <Compile Include="Services\TownServiceTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.config" />
@@ -138,6 +140,10 @@
     <ProjectReference Include="..\TelerikAcademy.TripyMate.Data.Model\TelerikAcademy.TripyMate.Data.Model.csproj">
       <Project>{D1A19ACF-F80C-47CD-BD71-C3D02B043CCA}</Project>
       <Name>TelerikAcademy.TripyMate.Data.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TelerikAcademy.TripyMate.Data\TelerikAcademy.TripyMate.Data.csproj">
+      <Project>{61EF2F4B-2F00-4431-971E-E155721A2E6C}</Project>
+      <Name>TelerikAcademy.TripyMate.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\TelerikAcademy.TripyMate.Providers\TelerikAcademy.TripyMate.Providers.csproj">
       <Project>{94EC3141-0275-4777-B613-FA5E30164E0D}</Project>
@@ -152,6 +158,7 @@
       <Name>TelerikAcademy.TripyMate.Web</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
