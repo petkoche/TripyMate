@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using TelerikAcademy.TripyMate.Data.Model;
+using TelerikAcademy.TripyMate.Providers.Contracts;
 using TelerikAcademy.TripyMate.Services;
 using TelerikAcademy.TripyMate.Services.Contracts;
 using TelerikAcademy.TripyMate.Web.Models.Home;
@@ -18,8 +19,9 @@ namespace TelerikAcademy.TripyMate.Web.Controllers
     {
         private readonly IPostsService postsService;
         private readonly ITownService townService;
+        private readonly IMapProvider mapProvider;
 
-        public PostController(IPostsService postsService, ITownService townService)
+        public PostController(IPostsService postsService, ITownService townService, IMapProvider mapProvider)
         {
             if (postsService == null)
             {
@@ -31,6 +33,12 @@ namespace TelerikAcademy.TripyMate.Web.Controllers
                 throw new ArgumentNullException();
             }
 
+            if (mapProvider == null)
+            {
+                throw new ArgumentNullException();
+            }
+
+            this.mapProvider = mapProvider;
             this.postsService = postsService;
             this.townService = townService;
         }
@@ -89,8 +97,8 @@ namespace TelerikAcademy.TripyMate.Web.Controllers
 
         public ActionResult Create()
         {
-            var startTowns = this.townService.GetAllStartTowns().ToList().Select(x => Mapper.Map<StartTown>(x)).ToList();
-            var endTowns = this.townService.GetAllEndTowns().ToList().Select(x => Mapper.Map<EndTown>(x)).ToList();
+            var startTowns = this.townService.GetAllStartTowns().ToList().Select(x => this.mapProvider.GetMap<StartTown>(x)).ToList();
+            var endTowns = this.townService.GetAllEndTowns().ToList().Select(x => this.mapProvider.GetMap<EndTown>(x)).ToList();
 
             var model = new PostCreateViewModel()
             {
@@ -106,7 +114,7 @@ namespace TelerikAcademy.TripyMate.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(PostCreateViewModel model)
         {
-            var post = Mapper.Map<PostCreateViewModel>(model);
+            var post = this.mapProvider.GetMap<PostCreateViewModel>(model);
             Guid townName = model.StartTown;
             Guid endTownName = model.EndTown;
             string id = User.Identity.GetUserId();
@@ -118,27 +126,11 @@ namespace TelerikAcademy.TripyMate.Web.Controllers
                 Title = post.Title
             };
 
-
-            var toPost = Mapper.Map<Post>(postMod);
+            var toPost = this.mapProvider.GetMap<Post>(postMod);
             this.postsService.CreatePost(toPost, id, townName, endTownName);
 
             return RedirectToAction("Index", "Home", new { area = "" });
         }
-
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
-
 
         public ActionResult SearchPost()
         {

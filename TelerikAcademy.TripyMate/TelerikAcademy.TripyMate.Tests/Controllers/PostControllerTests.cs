@@ -13,11 +13,15 @@ using TestStack.FluentMVCTesting;
 using TelerikAcademy.TripyMate.Providers.Contracts;
 using TelerikAcademy.TripyMate.Web.Areas.Admin.Models;
 using TelerikAcademy.TripyMate.Web.Areas.Admin.Controllers;
+using System.Web;
+using System.Security.Principal;
+using System.Security.Claims;
+using System.Web.Routing;
 
 namespace TelerikAcademy.TripyMate.Tests.Controllers
 {
     [TestFixture]
-    public class PostAdminControllerTests
+    public class PostControllerTests
     {
         [Test]
         public void ConstructorShould_ThrowArgumentNullException_WhenNullPostAdminServiceIsPassedAsParameter()
@@ -26,7 +30,7 @@ namespace TelerikAcademy.TripyMate.Tests.Controllers
             var mapProvider = new Mock<IMapProvider>();
 
             //Act & Assert
-            Assert.Throws<ArgumentNullException>(() => new PostAdminController(null, null, mapProvider.Object));
+            Assert.Throws<ArgumentNullException>(() => new PostController(null, null, mapProvider.Object));
         }
 
         [Test]
@@ -38,9 +42,8 @@ namespace TelerikAcademy.TripyMate.Tests.Controllers
             var mapProvider = new Mock<IMapProvider>();
 
             //Act & Assert
-            Assert.Throws<ArgumentNullException>(() => new PostAdminController(null, townService.Object, null));
+            Assert.Throws<ArgumentNullException>(() => new PostController(null, townService.Object, null));
         }
-
 
         [Test]
         public void ConstructorShould_ThrowArgumentNullException_WhenNullMapProviderIsPassedAsParameter()
@@ -49,7 +52,7 @@ namespace TelerikAcademy.TripyMate.Tests.Controllers
             var PostAdminService = new Mock<IPostsService>();
 
             //Act & Assert
-            Assert.Throws<ArgumentNullException>(() => new PostAdminController(PostAdminService.Object, null, null));
+            Assert.Throws<ArgumentNullException>(() => new PostController(PostAdminService.Object, null, null));
         }
 
         [Test]
@@ -61,7 +64,7 @@ namespace TelerikAcademy.TripyMate.Tests.Controllers
             var mapProvider = new Mock<IMapProvider>();
 
             //Act & Assert
-            Assert.DoesNotThrow(() => new PostAdminController(postService.Object, townService.Object, mapProvider.Object));
+            Assert.DoesNotThrow(() => new PostController(postService.Object, townService.Object, mapProvider.Object));
         }
 
         [Test]
@@ -71,7 +74,7 @@ namespace TelerikAcademy.TripyMate.Tests.Controllers
             var postService = new Mock<IPostsService>();
             var townService = new Mock<ITownService>();
             var mapProvider = new Mock<IMapProvider>();
-            var controller = new PostAdminController(postService.Object, townService.Object, mapProvider.Object);
+            var controller = new PostController(postService.Object, townService.Object, mapProvider.Object);
 
             // Act
             ViewResult result = controller.Index() as ViewResult;
@@ -87,13 +90,45 @@ namespace TelerikAcademy.TripyMate.Tests.Controllers
             var postService = new Mock<IPostsService>();
             var townService = new Mock<ITownService>();
             var mapProvider = new Mock<IMapProvider>();
-            var controller = new PostAdminController(postService.Object, townService.Object, mapProvider.Object);
+            var controller = new PostController(postService.Object, townService.Object, mapProvider.Object);
 
             // Act
             ViewResult result = controller.Index() as ViewResult;
 
             // Assert
             Assert.AreEqual(string.Empty, result.ViewName);
+        }
+
+        [Test]
+        public void SearchActionShould_CallViewWithoutName()
+        {
+            // Arrange
+            var postService = new Mock<IPostsService>();
+            var townService = new Mock<ITownService>();
+            var mapProvider = new Mock<IMapProvider>();
+            var controller = new PostController(postService.Object, townService.Object, mapProvider.Object);
+
+            // Act
+            ViewResult result = controller.SearchPost() as ViewResult;
+
+            // Assert
+            Assert.AreEqual(string.Empty, result.ViewName);
+        }
+
+        [Test]
+        public void SearchActionShould_ReturnNotNullViewResult()
+        {
+            // Arrange
+            var postService = new Mock<IPostsService>();
+            var townService = new Mock<ITownService>();
+            var mapProvider = new Mock<IMapProvider>();
+            var controller = new PostController(postService.Object, townService.Object, mapProvider.Object);
+
+            // Act
+            ViewResult result = controller.SearchPost() as ViewResult;
+
+            // Assert
+            Assert.IsNotNull(result);
         }
     }
 }
