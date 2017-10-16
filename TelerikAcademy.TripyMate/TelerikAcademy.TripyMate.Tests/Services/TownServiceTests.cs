@@ -10,7 +10,7 @@ using TelerikAcademy.TripyMate.Services;
 namespace TelerikAcademy.TripyMate.Tests.Services
 {
     [TestFixture]
-    class TownServiceTests
+    public class TownServiceTests
     {
         [Test]
         public void ConstructorShould_ThrowArgumentNullException_WhenNullstartTownRepositoryIsPassedAsParameter()
@@ -39,7 +39,7 @@ namespace TelerikAcademy.TripyMate.Tests.Services
         }
 
         [Test]
-        public void ConstructorShould_ThrowArgumentNullException_WhenNullAddressRepositoryIsPassedAsParameter()
+        public void ConstructorShould_ThrowArgumentNullException_WhenNullTownsUnitOfworkRepositoryIsPassedAsParameter()
         {
             //Arrange
             var startTownRepository = new Mock<IStartTownsRepository>();
