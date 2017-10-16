@@ -4,6 +4,7 @@ using Kendo.Mvc.UI;
 using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
+using TelerikAcademy.TripyMate.Providers.Contracts;
 using TelerikAcademy.TripyMate.Services.Contracts;
 using TelerikAcademy.TripyMate.Services.Model;
 using TelerikAcademy.TripyMate.Web.Areas.Admin.Models;
@@ -14,8 +15,9 @@ namespace TelerikAcademy.TripyMate.Web.Areas.Admin.Controllers
     public class GridPostController : Controller
     {
         private readonly IPostsService postService;
+        private readonly IMapProvider mapProvider;
 
-        public GridPostController(IPostsService postService)
+        public GridPostController(IPostsService postService, IMapProvider mapProvider)
         {
             if (postService == null)
             {
@@ -23,6 +25,13 @@ namespace TelerikAcademy.TripyMate.Web.Areas.Admin.Controllers
             }
 
             this.postService = postService;
+
+            if (mapProvider == null)
+            {
+                throw new ArgumentNullException();
+            }
+
+            this.mapProvider = mapProvider;
         }
 
         // GET: Admin/GridPost
@@ -34,8 +43,8 @@ namespace TelerikAcademy.TripyMate.Web.Areas.Admin.Controllers
         public ActionResult GetPosts([DataSourceRequest] DataSourceRequest request)
         {
             var posts = this.postService.GetAllList();
-            var commentViewList = Mapper.Map<ICollection<GridPostViewModel>>(posts);
-            var result = commentViewList.ToDataSourceResult(request);
+            var postViewList = this.mapProvider.GetMapCollection<GridPostViewModel>(posts);
+            var result = postViewList.ToDataSourceResult(request);
 
             return Json(result);
         }
@@ -48,7 +57,7 @@ namespace TelerikAcademy.TripyMate.Web.Areas.Admin.Controllers
             return Json(new[] { model });
         }
 
-        public ActionResult DeleteComment(GridPostViewModel model)
+        public ActionResult DeletePost(GridPostViewModel model)
         {
             this.postService.DeletePost(model.ID);
 

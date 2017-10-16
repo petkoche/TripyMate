@@ -407,6 +407,10 @@
       <Project>{61EF2F4B-2F00-4431-971E-E155721A2E6C}</Project>
       <Name>TelerikAcademy.TripyMate.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TelerikAcademy.TripyMate.Providers\TelerikAcademy.TripyMate.Providers.csproj">
+      <Project>{94EC3141-0275-4777-B613-FA5E30164E0D}</Project>
+      <Name>TelerikAcademy.TripyMate.Providers</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TelerikAcademy.TripyMate.Services\TelerikAcademy.TripyMate.Services.csproj">
       <Project>{FC2FA187-E1F6-444D-A1AB-323DBAC23FA5}</Project>
       <Name>TelerikAcademy.TripyMate.Services</Name>

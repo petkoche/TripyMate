@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using TelerikAcademy.TripyMate.Services;
 using TelerikAcademy.TripyMate.Services.Contracts;
 using TelerikAcademy.TripyMate.Web.Models.Home;
 using TelerikAcademy.TripyMate.Web.Models.Post;
@@ -16,6 +13,10 @@ namespace TelerikAcademy.TripyMate.Web.Controllers
 
         public HomeController(IPostsService postsService)
         {
+            if(postsService == null)
+            {
+                throw new ArgumentNullException();
+            }
             this.postsService = postsService;
         }
 
@@ -48,6 +49,7 @@ namespace TelerikAcademy.TripyMate.Web.Controllers
             return View(viewModel);
         }
 
+        [OutputCache(Duration = 30)]
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
@@ -55,6 +57,7 @@ namespace TelerikAcademy.TripyMate.Web.Controllers
             return View();
         }
 
+        [OutputCache(Duration = 30)]
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";

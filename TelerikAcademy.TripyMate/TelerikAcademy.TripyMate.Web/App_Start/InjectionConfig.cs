@@ -18,6 +18,8 @@ namespace TelerikAcademy.TripyMate.Web.App_Start
     using Data.UnitOfWork;
     using Services;
     using AutoMapper;
+    using Providers.Contracts;
+    using Providers;
 
     public static class InjectionConfig
     {
@@ -93,6 +95,7 @@ namespace TelerikAcademy.TripyMate.Web.App_Start
             kernel.Bind<IStartTownsRepository>().To<StartTownsRepository>().InSingletonScope();
             kernel.Bind<IEndTownsRepository>().To<EndTownsRepository>().InSingletonScope();
             kernel.Bind<IMapper>().To<Mapper>();
+            kernel.Bind<IMapProvider>().To<MapProvider>().InSingletonScope();
         }        
     }
 }
