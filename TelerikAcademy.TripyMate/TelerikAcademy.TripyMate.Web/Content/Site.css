@@ -116,7 +116,7 @@ textarea {
         /*-- end reset --*/
         body {
             font-family: 'Open Sans', sans-serif;
-            background: url(http://anticrashblog.es/wp-content/uploads/2014/09/niebla_ruta_02_gr.jpg)repeat center 0px;
+            background: url(./Background/bg.jpg)repeat center 0px;
             background-attachment: fixed;
             -webkit-background-size: cover;
             -moz-background-size: cover;
