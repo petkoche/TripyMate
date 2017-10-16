@@ -20,7 +20,6 @@ namespace TelerikAcademy.TripyMate.Web.Controllers
             this.postsService = postsService;
         }
 
-        [OutputCache(Duration = 30)]
         public ActionResult Index()
         {
             var posts = this.postsService
@@ -49,7 +48,14 @@ namespace TelerikAcademy.TripyMate.Web.Controllers
             return View(viewModel);
         }
 
-        [OutputCache(Duration = 30)]
+        [OutputCacheLongLived]
+        [ChildActionOnly]
+        public ActionResult PostDetailsPartial()
+        {
+            return this.PartialView();
+        }
+
+        [OutputCacheLongLived]
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
@@ -57,7 +63,7 @@ namespace TelerikAcademy.TripyMate.Web.Controllers
             return View();
         }
 
-        [OutputCache(Duration = 30)]
+        [OutputCacheLongLived]
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";

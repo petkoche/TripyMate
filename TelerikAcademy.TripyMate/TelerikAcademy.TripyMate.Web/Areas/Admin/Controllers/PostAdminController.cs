@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using TelerikAcademy.TripyMate.Data.Model;
 using TelerikAcademy.TripyMate.Services.Contracts;
 using TelerikAcademy.TripyMate.Web.Areas.Admin.Models;
+using TelerikAcademy.TripyMate.Providers.Contracts;
 
 namespace TelerikAcademy.TripyMate.Web.Areas.Admin.Controllers
 {
@@ -16,8 +17,9 @@ namespace TelerikAcademy.TripyMate.Web.Areas.Admin.Controllers
     {
         private readonly IPostsService postService;
         private readonly ITownService townService;
+        private readonly IMapProvider mapProvider;
 
-        public PostAdminController(IPostsService postService, ITownService townService)
+        public PostAdminController(IPostsService postService, ITownService townService, IMapProvider mapProvider)
         {
             if (postService == null)
             {
@@ -29,6 +31,12 @@ namespace TelerikAcademy.TripyMate.Web.Areas.Admin.Controllers
                 throw new ArgumentNullException();
             }
 
+            if (mapProvider == null)
+            {
+                throw new ArgumentNullException();
+            }
+
+            this.mapProvider = mapProvider;
             this.postService = postService;
             this.townService = townService;
         }
@@ -37,8 +45,8 @@ namespace TelerikAcademy.TripyMate.Web.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            var startTowns = this.townService.GetAllStartTowns().ToList().Select(x => Mapper.Map<StartTown>(x)).ToList();
-            var endTowns = this.townService.GetAllEndTowns().ToList().Select(x => Mapper.Map<EndTown>(x)).ToList();
+            var startTowns = this.townService.GetAllStartTowns().ToList().Select(x => this.mapProvider.GetMap<StartTown>(x)).ToList();
+            var endTowns = this.townService.GetAllEndTowns().ToList().Select(x => this.mapProvider.GetMap<EndTown>(x)).ToList();
 
             var model = new IndexViewModel()
             {
@@ -54,7 +62,7 @@ namespace TelerikAcademy.TripyMate.Web.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Index(IndexViewModel model)
         {
-            var post = Mapper.Map<IndexViewModel>(model);
+            var post = this.mapProvider.GetMap<IndexViewModel>(model);
             Guid townName = model.StartTown;
             Guid endTownName = model.EndTown;
             string id = User.Identity.GetUserId();
@@ -66,8 +74,7 @@ namespace TelerikAcademy.TripyMate.Web.Areas.Admin.Controllers
                 Title = post.Title
             };
 
-
-            var toPost = Mapper.Map<Post>(postMod);
+            var toPost = this.mapProvider.GetMap<Post>(postMod);
             this.postService.CreatePost(toPost, id, townName, endTownName);
 
             return RedirectToAction("Index", "Home", new { area = "" });

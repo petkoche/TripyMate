@@ -123,6 +123,7 @@
   <ItemGroup>
     <Compile Include="Controllers\AdminControllerTests.cs" />
     <Compile Include="Controllers\GridPostControllerTests.cs" />
+    <Compile Include="Controllers\PostAdminControllerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\HomeControllerTest.cs" />
   </ItemGroup>
